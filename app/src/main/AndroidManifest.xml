@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.btl">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logoapp"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logoapp"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BTL"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".View.UpdateRatting"
+            android:exported="false" />
+        <activity
+            android:name=".View.ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".View.ChangeAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.PaperOnBoardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.RattingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Fragment.WebActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_api_key" />
+
+        <activity
+            android:name=".View.StoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.ListTypeStore"
+            android:exported="false" />
+        <activity android:name=".View.YouTubeMainActivity"
+            android:exported="false"></activity>
+        <activity android:name=".View.PlayVideoActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".View.RegesterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

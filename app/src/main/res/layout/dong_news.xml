@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <TextView
+        android:text="Tiêu đề tin tức"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTitle"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingLeft="5dp"
+        >
+    </TextView>
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:src="@drawable/ic_launcher_background"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
+            android:id="@+id/imgImage">
+
+        </ImageView>
+        <TextView
+            android:id="@+id/txtDesc"
+            android:text="ddaay la tin tuc don gian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black">
+
+        </TextView>
+    </LinearLayout>
+</LinearLayout>

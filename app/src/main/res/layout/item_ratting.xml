@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:id="@+id/layout_ratting">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:weightSum="10">
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:layout_weight="1"
+           android:id="@+id/tv_ratting_user_image"
+           android:src="@drawable/ic_launcher_background"
+           android:layout_width="70dp"
+           android:layout_height="70dp"
+           ></de.hdodenhof.circleimageview.CircleImageView>
+       <LinearLayout
+           android:layout_weight="8"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+            android:orientation="vertical"
+           android:padding="10dp"
+           >
+           <TextView
+               android:id="@+id/tv_ratting_user_name"
+               android:textSize="16sp"
+               android:textColor="@color/black"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Thế Anh"
+               ></TextView>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               >
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_baseline_star_rate_24"
+                   ></ImageView>
+               <TextView
+                   android:id="@+id/tv_ratting_user_ratting"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textColor="@color/black"
+                   android:layout_gravity="center"
+                   android:text="4.6"
+                   ></TextView>
+           </LinearLayout>
+
+       </LinearLayout>
+       <TextView
+           android:gravity="center"
+           android:layout_weight="1"
+           android:id="@+id/textViewOptions"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentTop="true"
+           android:text="&#8942;"
+           android:textAppearance="?android:textAppearanceLarge" />
+   </LinearLayout>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/tv_ratting_comment"
+        android:textColor="@color/black"
+        android:paddingLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sản phẩm khá tốt mỗi tội tôi khong thích lắm"
+        android:maxHeight="80dp"
+        ></TextView>
+</LinearLayout>

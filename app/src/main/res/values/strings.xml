@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">The FOOD STORE</string>
+    <string name="bottom_home">Trang chủ</string>
+    <string name="bottom_search">Tìm kiếm </string>
+    <string name="bottom_heart">Yêu thích</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="bottom_News">Tin tức</string>
+    <string name="bottom_account">Tài khoản</string>
+    <string name="bottom_store_info">Thông tin</string>
+    <string name="bottom_store_ratting">Bình luận</string>
+    <string name="bottom_store_location">Vị trí</string>
+    <string name="map_api_key">AIzaSyBAWjpoy7aqTtv5vlI92daianY7qC2iJsw</string>
+</resources>

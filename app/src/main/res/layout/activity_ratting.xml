@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.RattingActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img_RattingBack"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:background="@color/purple_500"></ImageView>
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            <androidx.appcompat.widget.Toolbar
+                app:titleTextColor="@color/black"
+                android:id="@+id/toolBar_ratting"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/purple_500"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="Trang chủ"
+                >
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        >
+
+        <RatingBar
+            android:id="@+id/ratingBarYours"
+            style="@android:style/Widget.RatingBar"
+            android:isIndicator="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:numStars="5"
+            android:stepSize="1"></RatingBar>
+        <TextView
+            android:id="@+id/textViewYourCurrentRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:textSize="16dp"
+            android:text="4.6"
+            ></TextView>
+    </LinearLayout>
+    <EditText
+        android:id="@+id/edt_commetn_ratting"
+        android:background="@drawable/bacjground_edt"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:maxHeight="50dp"
+        android:hint="Nhập nhận xét của bạn"
+        android:padding="10dp"
+        ></EditText>
+    <Button
+        android:id="@+id/btnSentRatting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Gửi đánh giá"
+        ></Button>
+</LinearLayout>

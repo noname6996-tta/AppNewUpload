@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_white_conner_16"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    android:paddingBottom="5dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vui lòng nhập mật khẩu"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:gravity="center"
+        android:background="@drawable/bg_blue_conner_16"
+        ></TextView>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_update_account"
+        android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="88252-data-security.json"
+        app:lottie_loop="true"/>
+    <EditText
+        android:id="@+id/edt_check_update_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập mât khẩu"
+        ></EditText>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+        <Button
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/btn_after_canel_update"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Thoát"
+            android:background="@drawable/bacjground_edt_type2"
+            ></Button>
+        <Button
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/btn_after_enteraccount"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Ok"
+            android:background="@drawable/bacjground_edt"
+            ></Button>
+    </LinearLayout>
+
+</LinearLayout>
