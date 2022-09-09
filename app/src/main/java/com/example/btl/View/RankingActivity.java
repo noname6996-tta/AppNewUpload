@@ -43,7 +43,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RattingActivity extends AppCompatActivity implements RattingInterface {
+public class RankingActivity extends AppCompatActivity implements RattingInterface {
     private ImageView img_RattingBack;
     private TextView textViewYourCurrentRating;
     private RatingBar ratingBarYours;

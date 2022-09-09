@@ -4,7 +4,6 @@ import static android.content.Context.LOCATION_SERVICE;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -14,11 +13,7 @@ import android.os.Bundle;
 
 import android.os.Handler;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -26,7 +21,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -34,12 +28,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.btl.Adapter.CategoryAdapter;
 import com.example.btl.Adapter.PhotoAdapter;
 import com.example.btl.Adapter.StoreAdapter;
@@ -48,14 +36,8 @@ import com.example.btl.Interface.HomeFragmentInterface;
 import com.example.btl.Model.Category;
 import com.example.btl.Model.Photo;
 import com.example.btl.Model.Store;
-import com.example.btl.Model.StoreModel;
 import com.example.btl.Presenter.HomeFragmentPersenter;
 import com.example.btl.R;
-import com.example.btl.View.MainActivity;
-import com.example.btl.View.YouTubeMainActivity;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;

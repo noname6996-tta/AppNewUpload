@@ -5,13 +5,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -28,7 +24,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.btl.Interface.CallBack.AccountFragmentCallBack;
@@ -37,7 +32,7 @@ import com.example.btl.Presenter.AccountFragmentPresenter;
 import com.example.btl.R;
 import com.example.btl.View.ChangeAccountActivity;
 import com.example.btl.View.LoginActivity;
-import com.example.btl.View.YouTubeMainActivity;
+import com.example.btl.View.YouTubeActivity;
 
 
 public class AccountFragment extends Fragment implements AccountFragmentCallBack {
@@ -102,7 +97,7 @@ public class AccountFragment extends Fragment implements AccountFragmentCallBack
         btnGotoYouTube.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), YouTubeMainActivity.class);
+                Intent intent = new Intent(getContext(), YouTubeActivity.class);
                 startActivity(intent);
             }
         });

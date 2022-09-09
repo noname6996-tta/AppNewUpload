@@ -25,7 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class YouTubeMainActivity extends AppCompatActivity {
+public class YouTubeActivity extends AppCompatActivity {
     public static String API_KEY =  "AIzaSyCrlQWGfiphh9oO-Kmra-jMOLmm7DXwCqU";
     String ID_PlayList = "PLpfjxvspXEVEcX1eC0_k0FFTUeUoFo2Og";
     String url_GetJson = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId="+ ID_PlayList +"&key="+ API_KEY +"&maxResults=50";
@@ -50,7 +50,7 @@ public class YouTubeMainActivity extends AppCompatActivity {
         lvVideo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent =  new Intent(YouTubeMainActivity.this, PlayVideoActivity.class);
+                Intent intent =  new Intent(YouTubeActivity.this, PlayVideoActivity.class);
                 intent.putExtra("idVideoYoutube", arrayVideo.get(i).getIdVideo());
                 startActivity(intent);
             }
@@ -91,7 +91,7 @@ public class YouTubeMainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(YouTubeMainActivity.this,"Loi !!",Toast.LENGTH_LONG).show();
+                Toast.makeText(YouTubeActivity.this,"Loi !!",Toast.LENGTH_LONG).show();
             }
         });
         requestQueue.add(jsonObjectRequest);

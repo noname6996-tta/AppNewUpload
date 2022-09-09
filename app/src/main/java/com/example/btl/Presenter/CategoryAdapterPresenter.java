@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.btl.Interface.CategoryAdaInterface;
 import com.example.btl.Model.Category;
-import com.example.btl.View.ListTypeStore;
+import com.example.btl.View.CategoryStore;
 
 public class CategoryAdapterPresenter {
     private Context context;
@@ -17,7 +17,7 @@ public class CategoryAdapterPresenter {
     }
 
     public void loadData(Category category,Context mContext) {
-        Intent intent = new Intent(mContext, ListTypeStore.class);
+        Intent intent = new Intent(mContext, CategoryStore.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("category", category);
         intent.putExtras(bundle);

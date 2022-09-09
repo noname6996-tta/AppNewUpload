@@ -11,7 +11,7 @@ public class MainAcitivyPresenter {
         this.context = context;
     }
 
-    public void getNotiFa(){
-        FarvoriteModel.readFarvoiteList_toAddMain(context);
+    public void getNotifacationFavorite() {
+        FarvoriteModel.readFavoritesListToAddMain(context);
     }
 }

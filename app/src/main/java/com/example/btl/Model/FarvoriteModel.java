@@ -46,7 +46,7 @@ import java.util.Map;
 
 public class FarvoriteModel {
     public static void readFarvoiteList(Context mContext, FavoriteFragmentCallBack favoriteFragmentCallBack, FavoriteFragmentInterface favoriteFragmentInterface) {
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/favorite/selectfa.php";
+        String url = "http://"+ MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/favorite/selectfa.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -78,7 +78,7 @@ public class FarvoriteModel {
         requestQueue.add(jsonArrayRequest);
     }
     public static void readStoreList(Integer iduser, Context mContext, FavoriteFragmentCallBack favoriteFragmentCallBack) {
-        String url = "http://"+MainActivity.IPLOCALHOST+"/AndroidBTL/btl/store/selectStore.php";
+        String url = "http://"+MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/store/selectStore.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -198,7 +198,7 @@ public class FarvoriteModel {
         });
     }
     public static void addFavorite(Farvorite farvorite,Context mContext){
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/favorite/insertFa.php";
+        String url = "http://"+ MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/favorite/insertFa.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -223,7 +223,7 @@ public class FarvoriteModel {
         requestQueue.add(stringRequest);
     }
     public static void deleteFavorite(Farvorite farvorite,Context mContext){
-        String url = "http://"+MainActivity.IPLOCALHOST+"/AndroidBTL/btl/favorite/delete.php";
+        String url = "http://"+MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/favorite/delete.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -249,7 +249,7 @@ public class FarvoriteModel {
         requestQueue.add(stringRequest);
     }
     public static void readFarvoiteListStoreAcitivy(Store store, Context mContext, CheckBox chkLove, StoreAcitivyCallBack storeAcitivyCallBack) {
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/favorite/selectfa.php";
+        String url = "http://"+ MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/favorite/selectfa.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -266,10 +266,8 @@ public class FarvoriteModel {
                                 int idstore2 = store.getId_store();
                                 if (id_user.equals(iduser1) && id_store.equals(idstore2)){
                                     storeAcitivyCallBack.setCheckBox(id_love);
-
                                 }
                             }
-
                         }
                         catch (Exception exception){
                         }
@@ -320,8 +318,8 @@ public class FarvoriteModel {
         requestQueue.add(jsonArrayRequest);
 
     }
-    public static void readFarvoiteList_toAddMain(Context mContext) {
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/favorite/selectfa.php";
+    public static void readFavoritesListToAddMain(Context mContext) {
+        String url = "http://"+ MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/favorite/selectfa.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -338,7 +336,6 @@ public class FarvoriteModel {
                                     readStoreList_toAddMain(id_store,mContext);
                                 }
                             }
-
                         }
                         catch (Exception exception){
                         }
@@ -347,13 +344,13 @@ public class FarvoriteModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.e("readFavouriteListToAddMain",error.toString());
                     }
                 });
         requestQueue.add(jsonArrayRequest);
     }
     public static void readStoreList_toAddMain(Integer iduser, Context mContext) {
-        String url = "http://"+MainActivity.IPLOCALHOST+"/AndroidBTL/btl/store/selectStore.php";
+        String url = "http://"+MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/store/selectStore.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -362,7 +359,6 @@ public class FarvoriteModel {
                         JSONObject jsonObject;
 
                         try {
-                            Integer number = 0;
                             List<Store> storeList = new ArrayList<>();
                             for (int i = 0; i < response.length(); i++) {
                                 jsonObject = response.getJSONObject(i);
@@ -378,12 +374,7 @@ public class FarvoriteModel {
                                 String image_store = jsonObject.getString("image_store");
                                 Float star_store = Float.valueOf(jsonObject.getString("star_store"));
                                 Store store = new Store(id_store,name_store,address_store,type,timeopen,phone,lat,lot,linkWeb,image_store,star_store);
-                                if (iduser.equals(id_store)){
-                                    number++;
-                                }
-
                             }
-                            MainActivity.notiFavorite = number;
                         }
                         catch (Exception exception){
                             Log.e("FavoriteModel",exception.toString());

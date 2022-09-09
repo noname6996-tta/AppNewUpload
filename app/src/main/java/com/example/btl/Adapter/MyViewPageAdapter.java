@@ -11,10 +11,7 @@ import com.example.btl.Fragment.FavoriteFragment;
 import com.example.btl.Fragment.HomeFragment;
 import com.example.btl.Fragment.SearchFragment;
 
-
 public class MyViewPageAdapter extends FragmentStateAdapter {
-
-
     public MyViewPageAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
@@ -22,13 +19,19 @@ public class MyViewPageAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position){
-            case 0: return new HomeFragment();
-            case 1: return new SearchFragment();
-            case 2: return new FavoriteFragment();
-            case 3: return new NewsFragment();
-            case 4: return new AccountFragment();
-            default: return new HomeFragment();
+        switch (position) {
+            case 0:
+                return new HomeFragment();
+            case 1:
+                return new SearchFragment();
+            case 2:
+                return new FavoriteFragment();
+            case 3:
+                return new NewsFragment();
+            case 4:
+                return new AccountFragment();
+            default:
+                return new HomeFragment();
         }
     }
 

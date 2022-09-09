@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -32,18 +30,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
-import com.example.btl.Interface.CallBack.SotreRattingCallback;
 import com.example.btl.Model.Ratting;
 import com.example.btl.Model.RattingModel;
-import com.example.btl.Model.User;
-import com.example.btl.Model.UserModel;
 import com.example.btl.R;
-import com.example.btl.View.ChangeAccountActivity;
 import com.example.btl.View.LoginActivity;
 import com.example.btl.View.MainActivity;
-import com.example.btl.View.RattingActivity;
-import com.example.btl.View.StoreActivity;
-import com.example.btl.View.UpdateRatting;
+import com.example.btl.View.UpdateRattingActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -73,7 +65,7 @@ public class RattingAdapter extends RecyclerView.Adapter<RattingAdapter.RattingV
             return;
         }
         //
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/user/selectUser.php";
+        String url = "http://"+ MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/user/selectUser.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -121,7 +113,7 @@ public class RattingAdapter extends RecyclerView.Adapter<RattingAdapter.RattingV
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.menu1:
-                                Intent intent = new Intent(mContext, UpdateRatting.class);
+                                Intent intent = new Intent(mContext, UpdateRattingActivity.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("id_update",ratting.getId_rating());
                                 bundle.putFloat("ratting_update",ratting.getRatting());

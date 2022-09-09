@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.example.btl.Interface.CallBack.UpdateRatingInterface;
 import com.example.btl.Model.RattingModel;
-import com.example.btl.View.UpdateRatting;
 
 public class UpdateRattingPresenter {
     private Context context;

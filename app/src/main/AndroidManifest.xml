@@ -21,7 +21,7 @@
         android:theme="@style/Theme.BTL"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".View.UpdateRatting"
+            android:name=".View.UpdateRattingActivity"
             android:exported="false" />
         <activity
             android:name=".View.ForgotPassword"
@@ -33,7 +33,7 @@
             android:name=".View.PaperOnBoardingActivity"
             android:exported="false" />
         <activity
-            android:name=".View.RattingActivity"
+            android:name=".View.RankingActivity"
             android:exported="false" />
         <activity
             android:name=".Fragment.WebActivity"
@@ -47,9 +47,9 @@
             android:name=".View.StoreActivity"
             android:exported="false" />
         <activity
-            android:name=".View.ListTypeStore"
+            android:name=".View.CategoryStore"
             android:exported="false" />
-        <activity android:name=".View.YouTubeMainActivity"
+        <activity android:name=".View.YouTubeActivity"
             android:exported="false"></activity>
         <activity android:name=".View.PlayVideoActivity"
             android:exported="false"></activity>

@@ -13,11 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.btl.Interface.CallBack.UpdateRatingInterface;
-import com.example.btl.Model.RattingModel;
 import com.example.btl.Presenter.UpdateRattingPresenter;
 import com.example.btl.R;
 
-public class UpdateRatting extends AppCompatActivity implements UpdateRatingInterface {
+public class UpdateRattingActivity extends AppCompatActivity implements UpdateRatingInterface {
     private RatingBar ratingBarYours_update;
     private TextView tv_update_ratting;
     private EditText edt_update_comment_ratting;
@@ -46,7 +45,7 @@ public class UpdateRatting extends AppCompatActivity implements UpdateRatingInte
     }
 
     private void initUi() {
-        updateRattingPresenter = new UpdateRattingPresenter(UpdateRatting.this,this);
+        updateRattingPresenter = new UpdateRattingPresenter(UpdateRattingActivity.this,this);
         ratingBarYours_update = findViewById(R.id.ratingBarYours_update);
         tv_update_ratting = findViewById(R.id.tv_update_ratting);
         edt_update_comment_ratting = findViewById(R.id.edt_update_comment_ratting);
