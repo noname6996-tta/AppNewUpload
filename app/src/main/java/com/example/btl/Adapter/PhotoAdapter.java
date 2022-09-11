@@ -33,7 +33,7 @@ public class PhotoAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         Photo photo = mlistphoto.get(position);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("object_phote",photo);
+        bundle.putSerializable("object_phote", photo);
         Photo_fragment photo_fragment = new Photo_fragment();
         photo_fragment.setArguments(bundle);
         return photo_fragment;
@@ -41,8 +41,7 @@ public class PhotoAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        if (mlistphoto !=null)
-        {
+        if (mlistphoto != null) {
             return mlistphoto.size();
         }
         return 0;

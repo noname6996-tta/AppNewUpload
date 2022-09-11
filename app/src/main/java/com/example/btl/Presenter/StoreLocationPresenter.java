@@ -15,8 +15,8 @@ public class StoreLocationPresenter {
         this.storeLocationInterface = storeLocationInterface;
     }
 
-    public void Check(Store store){
-        if (store == null){
+    public void Check(Store store) {
+        if (store == null) {
             storeLocationInterface.onNullItems();
         }
     }

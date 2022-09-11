@@ -16,24 +16,24 @@ import com.example.btl.R;
 import java.util.List;
 
 public class NewsAdapter extends BaseAdapter {
-    List<News> list;
+    List<News> list_News;
     Context context;
     int layout;
 
     public NewsAdapter(List<News> list, Context context, int layout) {
-        this.list = list;
+        this.list_News = list;
         this.context = context;
         this.layout = layout;
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return list_News.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return list.get(i);
+        return list_News.get(i);
     }
 
     @Override
@@ -44,30 +44,27 @@ public class NewsAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
-        if (view == null){
+        if (view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(layout,null);
-            // anh xa
-            viewHolder.imgImage = view.findViewById(R.id.imgImage);
-            viewHolder.txtTitle = view.findViewById(R.id.txtTitle);
-            viewHolder.txtDesc = view.findViewById(R.id.txtDesc);
+            view = layoutInflater.inflate(layout, null);
+            viewHolder.imgImage = view.findViewById(R.id.img_image_news);
+            viewHolder.txtTitle = view.findViewById(R.id.txt_title);
+            viewHolder.txtDesc = view.findViewById(R.id.txt_desc);
             view.setTag(viewHolder);
-
-
-        }
-        else {
+        } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        News news = list.get(i);
+        News news = list_News.get(i);
         viewHolder.txtTitle.setText(news.getTitle());
         viewHolder.txtDesc.setText(news.getDesc());
         Glide.with(context).load(news.getImage()).error(R.drawable.ic_launcher_background).into(viewHolder.imgImage);
 
         return view;
     }
-    class ViewHolder{
-        TextView txtTitle,txtDesc;
+
+    class ViewHolder {
+        TextView txtTitle, txtDesc;
         ImageView imgImage;
 
     }

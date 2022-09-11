@@ -32,7 +32,7 @@ public class SearchFragmentPresenter {
         this.searchRragmentCallback = searchRragmentCallback;
     }
 
-    public void addToListSearch(){
-        StoreModel.addSearchStoreList(mContext,searchFragmentInterface,searchRragmentCallback);
+    public void addToListSearch() {
+        StoreModel.addSearchStoreList(mContext, searchFragmentInterface, searchRragmentCallback);
     }
 }

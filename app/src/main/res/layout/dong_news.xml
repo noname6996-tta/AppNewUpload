@@ -2,36 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
+
     <TextView
-        android:text="Tiêu đề tin tức"
+        android:id="@+id/txt_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtTitle"
+        android:paddingLeft="5dp"
+        android:text="Tiêu đề tin tức"
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:textStyle="bold"
-        android:paddingLeft="5dp"
-        >
-    </TextView>
+        android:textStyle="bold"></TextView>
+
     <LinearLayout
-        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="5dp">
+
         <ImageView
-            android:src="@drawable/ic_launcher_background"
+            android:id="@+id/img_image_news"
             android:layout_width="160dp"
             android:layout_height="100dp"
-            android:id="@+id/imgImage">
+            android:src="@drawable/ic_launcher_background">
 
         </ImageView>
+
         <TextView
-            android:id="@+id/txtDesc"
-            android:text="ddaay la tin tuc don gian"
+            android:id="@+id/txt_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="ddaay la tin tuc don gian"
             android:textColor="@color/black">
 
         </TextView>

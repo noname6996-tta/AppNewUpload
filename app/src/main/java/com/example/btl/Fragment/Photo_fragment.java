@@ -16,19 +16,15 @@ import com.example.btl.Presenter.PhotoFragmentPresenter;
 import com.example.btl.R;
 
 public class Photo_fragment extends Fragment {
-    private PhotoFragmentPresenter photoFragmentPresenter;
     private Photo photo;
     private View mview;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mview = inflater.inflate(R.layout.fragment_photo,container,false);
-
+        mview = inflater.inflate(R.layout.fragment_photo, container, false);
         Bundle bundle = getArguments();
         photo = (Photo) bundle.get("object_phote");
-//        Bundle bundle = getArguments();
-//        photoFragmentPresenter.getData(photo,bundle);
-
         ImageView imageView = mview.findViewById(R.id.imgPhoto);
         Glide.with(this).load(photo.getResoureId()).error(R.drawable.ic_launcher_background).into(imageView);
         return mview;

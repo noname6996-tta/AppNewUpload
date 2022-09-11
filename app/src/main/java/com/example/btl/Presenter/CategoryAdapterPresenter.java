@@ -16,7 +16,7 @@ public class CategoryAdapterPresenter {
         this.context = mContext;
     }
 
-    public void loadData(Category category,Context mContext) {
+    public void loadData(Category category, Context mContext) {
         Intent intent = new Intent(mContext, CategoryStore.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("category", category);

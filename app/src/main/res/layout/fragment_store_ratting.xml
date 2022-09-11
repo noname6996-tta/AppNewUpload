@@ -3,17 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="600dp"
     android:background="@color/white"
-    android:padding="2dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="2dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:background="@color/white"
         android:id="@+id/rec_comment"
         android:layout_width="match_parent"
-        android:layout_height="500dp"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="500dp"
+        android:background="@color/white"></androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/btn_gotoRattingAcity"
+        android:id="@+id/btn_ranking"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/rec_comment"

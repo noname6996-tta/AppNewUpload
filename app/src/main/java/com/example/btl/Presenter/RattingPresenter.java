@@ -34,17 +34,20 @@ public class RattingPresenter {
         this.context = context;
         this.rattingInterface = rattingInterface;
     }
-    public void addToRattingList(Ratting ratting){
-        RattingModel.addRatting(ratting,context,rattingInterface);
+
+    public void addToRattingList(Ratting ratting) {
+        RattingModel.addRatting(ratting, context, rattingInterface);
     }
-    public void check(Bundle bundle){
-        if (bundle == null){
+
+    public void check(Bundle bundle) {
+        if (bundle == null) {
             rattingInterface.onNullItem();
             return;
         }
     }
-    public void updateStarStore(Integer idstore){
-        StoreModel.readRattingForUpdateStore(context,idstore);
+
+    public void updateStarStore(Integer idstore) {
+        StoreModel.readRattingForUpdateStore(context, idstore);
     }
 
 }

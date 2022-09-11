@@ -33,20 +33,21 @@ public class StorerattingFragment extends Fragment implements StoreRattingInterf
     private StoreActivity storeActivity;
     private View view;
     private RecyclerView rec_comment;
-    private Button btn_gotoRattingAcity;
+    private Button btn_ranking;
     private List<Ratting> rattingList;
     private Store store;
     private RattingAdapter rattingAdapter;
-    public static Integer a = 0;
+    public static Integer ID_STORE_FIX = 0;
     private StoreRattingPresenter storeRattingPresenter;
     public static boolean checkCanComment = true;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_store_ratting,container,false);
+        view = inflater.inflate(R.layout.fragment_store_ratting, container, false);
         storeActivity = (StoreActivity) getActivity();
         store = storeActivity.getStore();
-        a = store.getId_store();
+        ID_STORE_FIX = store.getId_store();
         initUi();
         return view;
     }
@@ -54,23 +55,22 @@ public class StorerattingFragment extends Fragment implements StoreRattingInterf
     @SuppressLint("ResourceAsColor")
     private void initUi() {
         rec_comment = view.findViewById(R.id.rec_comment);
-        btn_gotoRattingAcity = view.findViewById(R.id.btn_gotoRattingAcity);
+        btn_ranking = view.findViewById(R.id.btn_ranking);
         DividerItemDecoration itemDecoration = new DividerItemDecoration(rec_comment.getContext(), DividerItemDecoration.VERTICAL);
         itemDecoration.setDrawable(new ColorDrawable(R.color.black));
         rec_comment.addItemDecoration(itemDecoration);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         rec_comment.setLayoutManager(linearLayoutManager);
-        storeRattingPresenter = new StoreRattingPresenter(getContext(),this,this);
+        storeRattingPresenter = new StoreRattingPresenter(getContext(), this, this);
         rattingList = new ArrayList<>();
-        rattingAdapter = new RattingAdapter(rattingList,getContext());
+        rattingAdapter = new RattingAdapter(rattingList, getContext());
         storeRattingPresenter.insertRattingtoRatting();
         rec_comment.setAdapter(rattingAdapter);
-
-        btn_gotoRattingAcity.setOnClickListener(new View.OnClickListener() {
+        btn_ranking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                storeRattingPresenter.checkCanComment(a,LoginActivity.id_user);
+                storeRattingPresenter.checkCanComment(ID_STORE_FIX, LoginActivity.id_user);
             }
         });
     }
@@ -93,7 +93,7 @@ public class StorerattingFragment extends Fragment implements StoreRattingInterf
 
     @Override
     public void checkId_store(Integer id, Ratting ratting) {
-        if (id.equals(a)){
+        if (id.equals(ID_STORE_FIX)) {
             rattingList.add(ratting);
             rattingAdapter.notifyDataSetChanged();
         }

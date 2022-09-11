@@ -14,7 +14,7 @@ public class ForGotPassPresenter {
         this.forGotPassInterface = forGotPassInterface;
     }
 
-    public void sendMailAndChangePass(String emailneed,String passneed){
-        UserModel.updateUser(emailneed,passneed,context,forGotPassInterface);
+    public void sendMailAndChangePass(String emailneed, String passneed) {
+        UserModel.updateUser(emailneed, passneed, context, forGotPassInterface);
     }
 }

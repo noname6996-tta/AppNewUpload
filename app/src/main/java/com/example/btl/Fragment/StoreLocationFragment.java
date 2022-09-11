@@ -25,8 +25,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class StoreLocationFragment extends Fragment implements OnMapReadyCallback , StoreLocationInterface {
-    GoogleMap mMap;
-    SupportMapFragment supportMapFragment;
+    private GoogleMap mMap;
+    private SupportMapFragment supportMapFragment;
     private StoreActivity storeActivity;
     private View view;
     private TextView store_address_location;
@@ -55,13 +55,13 @@ public class StoreLocationFragment extends Fragment implements OnMapReadyCallbac
     }
 
     @Override
-    rpublic void onMapReady(@NonNull GoogleMap googleMap) {
+    public void onMapReady(@NonNull GoogleMap googleMap) {
             mMap = googleMap;
             Float a= Float.parseFloat(store.getLat());
             Float b= Float.parseFloat(store.getLot());
             LatLng latLng = new LatLng(a, b);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,17));
-            mMap.addMarke(new MarkerOptions().position(latLng).title(store.getName_store()).snippet(store.getAddress_store()));
+            mMap.addMarker(new MarkerOptions().position(latLng).title(store.getName_store()).snippet(store.getAddress_store()));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
     }
 

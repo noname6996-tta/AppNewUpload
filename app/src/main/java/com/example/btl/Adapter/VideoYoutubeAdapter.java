@@ -40,29 +40,29 @@ public class VideoYoutubeAdapter extends BaseAdapter {
     public long getItemId(int i) {
         return 0;
     }
-    private  class ViewHolder{
-        ImageView imgThumbnail;
-        TextView txxTitle;
+
+    private class ViewHolder {
+        ImageView img_thumbnail;
+        TextView txt_view_title;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder;
-        if (view == null){
+        if (view == null) {
             holder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
-            holder.txxTitle = view.findViewById(R.id.txtViewTitle);
-            holder.imgThumbnail = view.findViewById(R.id.imgThumbnail);
+            holder.txt_view_title = view.findViewById(R.id.txt_view_title);
+            holder.img_thumbnail = view.findViewById(R.id.img_thumbnail);
             view.setTag(holder);
-        }
-        else {
+        } else {
             holder = (ViewHolder) view.getTag();
         }
 
         VideoYoutube video = videoYoutubeList.get(i);
-        holder.txxTitle.setText(video.getTitle());
-        Glide.with(context).load(video.getThumbnail()).error(R.drawable.ic_launcher_background).into(holder.imgThumbnail);
+        holder.txt_view_title.setText(video.getTitle());
+        Glide.with(context).load(video.getThumbnail()).error(R.drawable.ic_launcher_background).into(holder.img_thumbnail);
         return view;
     }
 }

@@ -11,6 +11,7 @@ import com.example.btl.R;
 
 public class WebActivity extends AppCompatActivity {
     WebView webView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +19,7 @@ public class WebActivity extends AppCompatActivity {
         webView = findViewById(R.id.webview);
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onLoadResource(WebView view, String url) {
                 super.onLoadResource(view, url);

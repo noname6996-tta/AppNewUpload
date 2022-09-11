@@ -20,7 +20,7 @@ public class ChangeAccountPresenter {
     }
 
     public void onClickUpdateUser(User user){
-        AccountModel.updateUser(mContext,user,changeAccountInterface);
+        AccountModel.upDateUser(mContext,user,changeAccountInterface);
         changeAccountInterface.onSuccess();
     }
     public void onClickCheck(EditText editText){

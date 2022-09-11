@@ -41,55 +41,30 @@ public class SearchFragment extends Fragment implements SearchFragmentInterface,
     private View view;
     private List<Store> mListStore;
     private List<Items_Suggest> items_suggestList;
-    private RecyclerView rec_search,suggestStoreRev;
+    private RecyclerView rec_search, suggestStoreRev;
     private SearchFragmentPresenter searchFragmentPresenter;
     private StoreAdapter storeAdapter;
-    private androidx.appcompat.widget.SearchView searchView;
     private EditText edt_search_store;
-    private TextView tv_suggest_items1,tv_suggest_items2,tv_suggest_items3,tv_suggest_items4,tv_suggest_items5,tv_suggest_items6;
+    private TextView tv_suggest_items1, tv_suggest_items2, tv_suggest_items3, tv_suggest_items4, tv_suggest_items5, tv_suggest_items6;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_search,container,false);
+        view = inflater.inflate(R.layout.fragment_search, container, false);
         setHasOptionsMenu(true);
         initUI();
+        initSuggestItems();
         return view;
     }
 
-    private void initUI() {
-        searchFragmentPresenter = new SearchFragmentPresenter(getContext(),this,this);
-        Toolbar toolbar = view.findViewById(R.id.toolBar_search);
-        toolbar.setTitle("Tìm kiếm");
-        rec_search = view.findViewById(R.id.rec_search);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        rec_search.setLayoutManager(linearLayoutManager);
-        mListStore = new ArrayList<>();
-        searchFragmentPresenter.addToListSearch();
-        storeAdapter = new StoreAdapter(mListStore,getContext());
-        rec_search.setAdapter(storeAdapter);
+    private void initSuggestItems() {
         tv_suggest_items1 = view.findViewById(R.id.tv_suggest_items1);
         tv_suggest_items2 = view.findViewById(R.id.tv_suggest_items2);
         tv_suggest_items3 = view.findViewById(R.id.tv_suggest_items3);
         tv_suggest_items4 = view.findViewById(R.id.tv_suggest_items4);
         tv_suggest_items5 = view.findViewById(R.id.tv_suggest_items5);
         tv_suggest_items6 = view.findViewById(R.id.tv_suggest_items6);
-        edt_search_store = view.findViewById(R.id.edt_search_store);
-        edt_search_store.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String storeSearch = edt_search_store.getText().toString().trim();
-                storeAdapter.getFilter().filter(storeSearch);
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {
 
-            }
-        });
         tv_suggest_items1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,7 +101,37 @@ public class SearchFragment extends Fragment implements SearchFragmentInterface,
                 edt_search_store.setText(tv_suggest_items6.getText().toString().trim());
             }
         });
+    }
 
+    private void initUI() {
+        searchFragmentPresenter = new SearchFragmentPresenter(getContext(), this, this);
+        Toolbar toolbar = view.findViewById(R.id.toolBar_search);
+        toolbar.setTitle("Tìm kiếm");
+        rec_search = view.findViewById(R.id.rec_search);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        rec_search.setLayoutManager(linearLayoutManager);
+        mListStore = new ArrayList<>();
+        searchFragmentPresenter.addToListSearch();
+        storeAdapter = new StoreAdapter(mListStore, getContext());
+        rec_search.setAdapter(storeAdapter);
+        edt_search_store = view.findViewById(R.id.edt_search_store);
+        edt_search_store.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String storeSearch = edt_search_store.getText().toString().trim();
+                storeAdapter.getFilter().filter(storeSearch);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     @Override

@@ -26,37 +26,38 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class YouTubeActivity extends AppCompatActivity {
-    public static String API_KEY =  "AIzaSyCrlQWGfiphh9oO-Kmra-jMOLmm7DXwCqU";
-    String ID_PlayList = "PLpfjxvspXEVEcX1eC0_k0FFTUeUoFo2Og";
-    String url_GetJson = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId="+ ID_PlayList +"&key="+ API_KEY +"&maxResults=50";
-
-    ListView lvVideo;
-    ArrayList<VideoYoutube> arrayVideo;
-    VideoYoutubeAdapter adapter;
+    public static String API_KEY = "AIzaSyCrlQWGfiphh9oO-Kmra-jMOLmm7DXwCqU";
+    private String id_playlist = "PLpfjxvspXEVEcX1eC0_k0FFTUeUoFo2Og";
+    private String url_GetJson = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + id_playlist + "&key=" + API_KEY + "&maxResults=50";
+    private ListView lvVideo;
+    private ArrayList<VideoYoutube> arrayVideo;
+    private VideoYoutubeAdapter adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.youtube_activity_main);
-
+        mapping();
+    }
+    
+    public void mapping() {
         lvVideo = findViewById(R.id.lvVideo);
         arrayVideo = new ArrayList<>();
-        adapter = new VideoYoutubeAdapter(this, R.layout.row_video_youtube,arrayVideo);
+        adapter = new VideoYoutubeAdapter(this, R.layout.row_video_youtube, arrayVideo);
         lvVideo.setAdapter(adapter);
-
         GetJsonYoutube(url_GetJson);
-
         lvVideo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent =  new Intent(YouTubeActivity.this, PlayVideoActivity.class);
+                Intent intent = new Intent(YouTubeActivity.this, PlayVideoActivity.class);
                 intent.putExtra("idVideoYoutube", arrayVideo.get(i).getIdVideo());
                 startActivity(intent);
             }
         });
     }
-    private void GetJsonYoutube(String url){
+
+    private void GetJsonYoutube(String url) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -76,22 +77,17 @@ public class YouTubeActivity extends AppCompatActivity {
                                 url = jsonMedium.getString("url");
                                 JSONObject jsonResourceID = jsonSnippet.getJSONObject("resourceId");
                                 idVideo = jsonResourceID.getString("videoId");
-
-                                arrayVideo.add(new VideoYoutube(title,url,idVideo));
-
+                                arrayVideo.add(new VideoYoutube(title, url, idVideo));
                             }
                             adapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                            catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-
+                    }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(YouTubeActivity.this,"Loi !!",Toast.LENGTH_LONG).show();
+                Toast.makeText(YouTubeActivity.this, "Loi !!", Toast.LENGTH_LONG).show();
             }
         });
         requestQueue.add(jsonObjectRequest);

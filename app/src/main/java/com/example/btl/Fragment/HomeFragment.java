@@ -47,12 +47,12 @@ import me.relex.circleindicator.CircleIndicator3;
 
 
 public class HomeFragment extends Fragment implements HomeFragmentInterface, HomeFragmentcallBack, LocationListener {
-    LocationManager locationManager;
+    private LocationManager locationManager;
     private ProgressDialog progressDialog;
     private ViewPager2 mviewPager2;
     private CircleIndicator3 mcircleIndicator3;
     private List<Photo> mListphoto;
-    private static List<Category> categoryList;
+    private List<Category> categoryList;
     private List<Store> mListStore;
     private RecyclerView rec_category;
     private RecyclerView rec_Store;
@@ -67,28 +67,29 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface, Hom
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            if (mviewPager2.getCurrentItem() == mListphoto.size()-1){
+            if (mviewPager2.getCurrentItem() == mListphoto.size() - 1) {
                 mviewPager2.setCurrentItem(0);
             } else {
-                mviewPager2.setCurrentItem(mviewPager2.getCurrentItem()+1);
+                mviewPager2.setCurrentItem(mviewPager2.getCurrentItem() + 1);
             }
         }
     };
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home,container,false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
         initUi();
         initStore();
         return view;
     }
 
     private void initUi() {
-        homeFragmentPersenter = new HomeFragmentPersenter(getContext(),this,this);
+        homeFragmentPersenter = new HomeFragmentPersenter(getContext(), this, this);
         toolBar_main = view.findViewById(R.id.toolBar_main);
         mviewPager2 = view.findViewById(R.id.view_paeger2);
         mcircleIndicator3 = view.findViewById(R.id.circle_indercator3);
-        photoAdapter = new PhotoAdapter(this.getContext(),getListPhoto());
+        photoAdapter = new PhotoAdapter(this.getContext(), getListPhoto());
         mviewPager2.setAdapter(photoAdapter);
         mcircleIndicator3.setViewPager(mviewPager2);
         mviewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -96,39 +97,41 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface, Hom
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 handler.removeCallbacks(runnable);
-                handler.postDelayed(runnable,3000);
+                handler.postDelayed(runnable, 3000);
             }
         });
         tv_location_home = view.findViewById(R.id.tv_location_home);
 
     }
 
-    private void initStore(){
+    private void initStore() {
+        // inti recycle view show store
         rec_Store = view.findViewById(R.id.rec_Store);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         rec_Store.setLayoutManager(linearLayoutManager);
         mListStore = new ArrayList<>();
-        storeAdapter = new StoreAdapter(mListStore,this.getContext());
+        storeAdapter = new StoreAdapter(mListStore, this.getContext());
         homeFragmentPersenter.addStore(mListStore);
         rec_Store.setAdapter(storeAdapter);
 
+        // inti recycle view show category
         rec_category = view.findViewById(R.id.rec_category);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getContext(),2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getContext(), 2);
         gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         rec_category.setLayoutManager(gridLayoutManager);
         categoryList = new ArrayList<>();
-        categoryAdapter = new CategoryAdapter(categoryList,this.getContext());
+        categoryAdapter = new CategoryAdapter(categoryList, this.getContext());
         homeFragmentPersenter.addCategory(categoryList);
         rec_category.setAdapter(categoryAdapter);
     }
 
     private List<Photo> getListPhoto() {
         mListphoto = new ArrayList<>();
-        mListphoto.add(new Photo(1,"https://thefoodstorecafe.com/wp-content/uploads/2021/01/foodstore-logo-black-1-1.png?w=600",1));
-        mListphoto.add(new Photo(1,"https://thefoodstorecafe.files.wordpress.com/2021/01/foodstore-cafe_28-11_001-1.jpg",1));
-        mListphoto.add(new Photo(1,"https://thefoodstorecafe.files.wordpress.com/2021/01/foodstore-cafe_5-11_025.jpg",1));
-        mListphoto.add(new Photo(1,"https://thefoodstorecafe.files.wordpress.com/2021/01/foodstore_11-3_002.jpg",1));
+        mListphoto.add(new Photo(1, "https://thefoodstorecafe.com/wp-content/uploads/2021/01/foodstore-logo-black-1-1.png?w=600", 1));
+        mListphoto.add(new Photo(1, "https://thefoodstorecafe.files.wordpress.com/2021/01/foodstore-cafe_28-11_001-1.jpg", 1));
+        mListphoto.add(new Photo(1, "https://thefoodstorecafe.files.wordpress.com/2021/01/foodstore-cafe_5-11_025.jpg", 1));
+        mListphoto.add(new Photo(1, "https://thefoodstorecafe.files.wordpress.com/2021/01/foodstore_11-3_002.jpg", 1));
         return mListphoto;
     }
 
@@ -140,41 +143,41 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface, Hom
 
     @Override
     public void onFail(String e) {
-        Log.d("LoadinHome",e.toString());
+        Log.d("LoadinHome", e.toString());
     }
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
         try {
             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
-            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             String address = addresses.get(0).getAddressLine(0);
             tv_location_home.setText(address);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    private void setProcessDialog(){
-        progressDialog = new ProgressDialog(this.getContext(),ProgressDialog.STYLE_SPINNER);
+
+    private void setProcessDialog() {
+        progressDialog = new ProgressDialog(this.getContext(), ProgressDialog.STYLE_SPINNER);
         progressDialog.setTitle("Hệ thống đang tải dữ liệu");
         progressDialog.setMessage("Vui lòng chờ");
     }
+
     @SuppressLint("MissingPermission")
     private void getLocation() {
         setProcessDialog();
-        //progressDialog.show();
         try {
             locationManager = (LocationManager) getContext().getApplicationContext().getSystemService(LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,5, (LocationListener) getContext());
-            //progressDialog.dismiss();
-        }catch (Exception e){
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, (LocationListener) getContext());
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+
     @Override
     public void addToCategory(Category category) {
-
         categoryList.add(category);
         categoryAdapter.notifyDataSetChanged();
     }

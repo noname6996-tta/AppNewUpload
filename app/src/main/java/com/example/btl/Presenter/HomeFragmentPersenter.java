@@ -38,10 +38,11 @@ public class HomeFragmentPersenter {
         this.homeFragmentcallBack = homeFragmentcallBack;
     }
 
-    public void addCategory(List<Category> categoryList){
-        CategoryModel.readCategoryList(categoryList,context,homeFragment,homeFragmentcallBack);
+    public void addCategory(List<Category> categoryList) {
+        CategoryModel.readCategoryList(categoryList, context, homeFragment, homeFragmentcallBack);
     }
-    public void addStore(List<Store> storeList){
-        StoreModel.readStoreList(storeList,context,homeFragment,homeFragmentcallBack);
+
+    public void addStore(List<Store> storeList) {
+        StoreModel.readStoreList(storeList, context, homeFragment, homeFragmentcallBack);
     }
 }

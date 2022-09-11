@@ -45,25 +45,27 @@ import java.util.Map;
 
 public class RankingActivity extends AppCompatActivity implements RattingInterface {
     private ImageView img_RattingBack;
-    private TextView textViewYourCurrentRating;
-    private RatingBar ratingBarYours;
+    private TextView tv_your_current_rating;
+    private RatingBar rat_ratingBar;
     private EditText edt_commetn_ratting;
-    private Button btnSentRatting;
+    private Button btn_sent_ratting;
     private RattingPresenter rattingPresenter;
 
     Float star;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ratting);
         initUI();
     }
+
     private void initUI() {
-        rattingPresenter = new RattingPresenter(this.getApplicationContext(),this);
-        textViewYourCurrentRating = findViewById(R.id.textViewYourCurrentRating);
-        ratingBarYours = findViewById(R.id.ratingBarYours);
+        rattingPresenter = new RattingPresenter(this.getApplicationContext(), this);
+        tv_your_current_rating = findViewById(R.id.tv_your_current_rating);
+        rat_ratingBar = findViewById(R.id.rat_ratingBar);
         edt_commetn_ratting = findViewById(R.id.edt_commetn_ratting);
-        btnSentRatting = findViewById(R.id.btnSentRatting);
+        btn_sent_ratting = findViewById(R.id.btn_sent_ratting);
         img_RattingBack = findViewById(R.id.img_RattingBack);
         img_RattingBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,25 +73,26 @@ public class RankingActivity extends AppCompatActivity implements RattingInterfa
                 onBackPressed();
             }
         });
-        ratingBarYours.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        rat_ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                textViewYourCurrentRating.setText("Bạn đánh giá: "+ v +" sao");
+                tv_your_current_rating.setText("Bạn đánh giá: " + v + " sao");
                 star = v;
             }
         });
         Bundle bundle = getIntent().getExtras();
         rattingPresenter.check(bundle);
         int a = bundle.getInt("a");
-        btnSentRatting.setOnClickListener(new View.OnClickListener() {
+        btn_sent_ratting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickRatting(a);
             }
         });
     }
-    public void onClickRatting(Integer a1){
-        Ratting ratting = new Ratting(0,a1,LoginActivity.id_user, star, edt_commetn_ratting.getText().toString().trim());
+
+    public void onClickRatting(Integer a1) {
+        Ratting ratting = new Ratting(0, a1, LoginActivity.id_user, star, edt_commetn_ratting.getText().toString().trim());
         rattingPresenter.addToRattingList(ratting);
         rattingPresenter.updateStarStore(a1);
     }
@@ -101,7 +104,7 @@ public class RankingActivity extends AppCompatActivity implements RattingInterfa
 
     @Override
     public void failRespon(String a) {
-        Toast.makeText(this, "Fail and Bug"+a, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Fail and Bug" + a, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -123,17 +126,18 @@ public class RankingActivity extends AppCompatActivity implements RattingInterfa
     public void cannotRatting() {
 
     }
-    private void openFeedBackDialog(int gravity){
+
+    private void openFeedBackDialog(int gravity) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.layout_dialog_feedback);
 
         Window window = dialog.getWindow();
-        if (window == null){
+        if (window == null) {
             return;
         }
 
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         WindowManager.LayoutParams windowAttributes = window.getAttributes();

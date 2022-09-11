@@ -23,7 +23,7 @@ import java.util.List;
 
 public class CategoryStore extends AppCompatActivity implements ListTypeStoreInterface {
     private Toolbar toolBar_listStore;
-    private RecyclerView rec_list_type_store;
+    private RecyclerView rec_category;
     private List<Store> mListStore;
     private SearchView searchView;
     private StoreAdapter storeAdapter;
@@ -36,20 +36,11 @@ public class CategoryStore extends AppCompatActivity implements ListTypeStoreInt
         setContentView(R.layout.activity_category_store);
         initUi();
         initStore();
-        listTypeStorePresenter = new ListTypeStorePresenter(getApplicationContext(), this);
-        Bundle bundle = getIntent().getExtras();
-        if (bundle == null) {
-            return;
-        }
-        Category category = (Category) bundle.get("category");
-        listTypeStorePresenter.CheckItem(category);
-        toolBar_listStore.setTitle(category.getType());
-        listTypeStorePresenter.readStoreList(category, mListStore, storeAdapter);
     }
 
     private void initUi() {
         toolBar_listStore = findViewById(R.id.toolBar_listStore);
-        rec_list_type_store = findViewById(R.id.rec_list_type_store);
+        rec_category = findViewById(R.id.rec_category);
         img_category_back = findViewById(R.id.img_category_back);
         img_category_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,13 +53,22 @@ public class CategoryStore extends AppCompatActivity implements ListTypeStoreInt
     }
 
     private void initStore() {
-        rec_list_type_store = findViewById(R.id.rec_list_type_store);
+        rec_category = findViewById(R.id.rec_category);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        rec_list_type_store.setLayoutManager(linearLayoutManager);
+        rec_category.setLayoutManager(linearLayoutManager);
         mListStore = new ArrayList<>();
         storeAdapter = new StoreAdapter(mListStore, this);
-        rec_list_type_store.setAdapter(storeAdapter);
+        rec_category.setAdapter(storeAdapter);
+        listTypeStorePresenter = new ListTypeStorePresenter(getApplicationContext(), this);
+        Bundle bundle = getIntent().getExtras();
+        if (bundle == null) {
+            return;
+        }
+        Category category = (Category) bundle.get("category");
+        listTypeStorePresenter.CheckItem(category);
+        toolBar_listStore.setTitle(category.getType());
+        listTypeStorePresenter.readStoreList(category, mListStore, storeAdapter);
     }
 
     @Override

@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class UserModel {
     public static void readUserList(String a, Context context) {
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/user/selectUser.php";
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/user/selectUser.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -52,15 +52,14 @@ public class UserModel {
                                 String phone = jsonObject.getString("phone");
                                 String password = jsonObject.getString("password");
                                 String image = jsonObject.getString("image");
-                                User user = new User(id,username,date,address,email,phone,image,password);
-                                if (email.equals(a)){
+                                User user = new User(id, username, date, address, email, phone, image, password);
+                                if (email.equals(a)) {
                                     LoginActivity.id_user = user.getId();
                                     LoginActivity.userName = user.getUsername();
                                     LoginActivity.passUser = user.getPassword();
                                 }
                             }
-                        }
-                        catch (Exception exception){
+                        } catch (Exception exception) {
                         }
                     }
                 },
@@ -72,7 +71,8 @@ public class UserModel {
                 });
         requestQueue.add(jsonArrayRequest);
     }
-    public static void checkLogin(String email1, String password1, Context context, LoginInterface login){
+
+    public static void checkLogin(String email1, String password1, Context context, LoginInterface login) {
         StringRequest requestLogin = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
                     @Override
@@ -85,8 +85,8 @@ public class UserModel {
                                 user.setEmail(jsonObject.getString("email"));
                                 message = jsonObject.getString("message");
                                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-                                String email= jsonObject.getString("email");
-                                readUserList(email,context);
+                                String email = jsonObject.getString("email");
+                                readUserList(email, context);
                                 login.loginSuccess();
                             } else {
                                 message = jsonObject.getString("message");
@@ -118,9 +118,10 @@ public class UserModel {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(requestLogin);
     }
+
     public static void regesterAccount(final String email1, final String password1, RegesterInterface regesterInterface, Context mContext) {
         if (regesterInterface.checkEditText(email1) && regesterInterface.checkEditText(password1)) {
-            StringRequest requestLogin = new StringRequest(Request.Method.POST, "http://"+MainActivity.IPLOCALHOST+"/AndroidBTL/btl/user/checkuser.php",
+            StringRequest requestLogin = new StringRequest(Request.Method.POST, "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/user/checkuser.php",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -131,13 +132,13 @@ public class UserModel {
                                 if (jsonObject.getInt("success") == 1) {
                                     User user = new User();
                                     user.setEmail(jsonObject.getString("email"));
-                                    String email= jsonObject.getString("email");
+                                    String email = jsonObject.getString("email");
                                     regesterInterface.onfail(email);
 
                                 } else {
                                     message = jsonObject.getString("message");
-                                    Log.d("CheckRes",message.toString());
-                                    addUser(email1,password1,mContext);
+                                    Log.d("CheckRes", message.toString());
+                                    addUser(email1, password1, mContext);
                                     regesterInterface.onSuccess();
                                 }
                             } catch (JSONException e) {
@@ -162,8 +163,9 @@ public class UserModel {
             queue.add(requestLogin);
         }
     }
-    private static void addUser(String email,String pass,Context mContext){
-        String url = "http://"+MainActivity.IPLOCALHOST+"/AndroidBTL/btl/user/insertuser.php";
+
+    private static void addUser(String email, String pass, Context mContext) {
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/user/insertuser.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -176,19 +178,20 @@ public class UserModel {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String > map = new HashMap<>();
-                map.put("email",email);
-                map.put("password",pass);
+                Map<String, String> map = new HashMap<>();
+                map.put("email", email);
+                map.put("password", pass);
                 return map;
             }
         };
         requestQueue.add(stringRequest);
     }
-    public static void updateUser(String emailChange, String passChange, Context context, ForGotPassInterface forGotPassInterface){
-        String url = "http://"+MainActivity.IPLOCALHOST+"/AndroidBTL/btl/user/updatePassWord.php";
+
+    public static void updateUser(String emailChange, String passChange, Context context, ForGotPassInterface forGotPassInterface) {
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/user/updatePassWord.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -201,12 +204,12 @@ public class UserModel {
             public void onErrorResponse(VolleyError error) {
                 forGotPassInterface.haveBug(error.toString());
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String > map = new HashMap<>();
-                map.put("email",emailChange);
-                map.put("password",passChange);
+                Map<String, String> map = new HashMap<>();
+                map.put("email", emailChange);
+                map.put("password", passChange);
                 return map;
             }
         };

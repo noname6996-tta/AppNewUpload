@@ -16,6 +16,7 @@ import com.example.btl.Model.Store;
 import com.example.btl.View.MainActivity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.List;
 public class ListTypeStorePresenter {
     private Context context;
     private ListTypeStoreInterface listTypeStoreInterface;
+    private Store store;
 
     public ListTypeStorePresenter(Context context, ListTypeStoreInterface listTypeStoreInterface) {
         this.context = context;
@@ -30,7 +32,7 @@ public class ListTypeStorePresenter {
     }
 
     public void readStoreList(Category category, List<Store> mListStore, StoreAdapter storeAdapter) {
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/store/selectStore.php";
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/store/selectStore.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -41,32 +43,18 @@ public class ListTypeStorePresenter {
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 jsonObject = response.getJSONObject(i);
-                                Integer id_store = Integer.valueOf(jsonObject.getString("id_store"));
-                                String name_store = jsonObject.getString("name_store");
-                                String address_store = jsonObject.getString("address_store");
-                                String type = jsonObject.getString("type");
-                                String timeopen = jsonObject.getString("timeopen");
-                                String phone = jsonObject.getString("phone");
-                                String lat = jsonObject.getString("lat");
-                                String lot = jsonObject.getString("lot");
-                                String linkWeb = jsonObject.getString("linkWeb");
-                                String image_store = jsonObject.getString("image_store");
-                                Float star_store = Float.valueOf(jsonObject.getString("star_store"));
-                                Store store = new Store(id_store,name_store,address_store,type,timeopen,phone,lat,lot,linkWeb,image_store,star_store);
-                                Log.d("Store",store.toString());
-                                if (category.getType().equalsIgnoreCase(type)){
+                                addDataListStore(jsonObject);
+                                if (category.getType().equalsIgnoreCase(jsonObject.getString("type"))) {
                                     mListStore.add(store);
                                     storeAdapter.notifyDataSetChanged();
-                                }
-                                else {
+                                } else {
                                     storeAdapter.notifyDataSetChanged();
                                 }
 
                             }
 
-                        }
-                        catch (Exception exception){
-                            Log.e("EXXXXX",exception.toString());
+                        } catch (Exception exception) {
+                            Log.e("EXXXXX", exception.toString());
                         }
                     }
                 },
@@ -79,8 +67,24 @@ public class ListTypeStorePresenter {
         requestQueue.add(jsonArrayRequest);
 
     }
-    public void CheckItem(Category category){
-        if (category == null){
+
+    public void addDataListStore(JSONObject jsonObject) throws JSONException {
+        Integer id_store = Integer.valueOf(jsonObject.getString("id_store"));
+        String name_store = jsonObject.getString("name_store");
+        String address_store = jsonObject.getString("address_store");
+        String type = jsonObject.getString("type");
+        String timeopen = jsonObject.getString("timeopen");
+        String phone = jsonObject.getString("phone");
+        String lat = jsonObject.getString("lat");
+        String lot = jsonObject.getString("lot");
+        String linkWeb = jsonObject.getString("linkWeb");
+        String image_store = jsonObject.getString("image_store");
+        Float star_store = Float.valueOf(jsonObject.getString("star_store"));
+        store = new Store(id_store, name_store, address_store, type, timeopen, phone, lat, lot, linkWeb, image_store, star_store);
+    }
+
+    public void CheckItem(Category category) {
+        if (category == null) {
             listTypeStoreInterface.onNullItems();
             return;
         }

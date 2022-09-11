@@ -19,7 +19,7 @@ public class PaperOnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(com.ramotion.paperonboarding.R.layout.onboarding_main_layout);
         PaperOnboardingEngine engine = new PaperOnboardingEngine(findViewById(com.ramotion.paperonboarding.R.id.onboardingRootView),
-                getPaperOnboardingPages(),this);
+                getPaperOnboardingPages(), this);
         engine.setOnRightOutListener(new PaperOnboardingOnRightOutListener() {
             @Override
             public void onRightOut() {
@@ -29,7 +29,7 @@ public class PaperOnBoardingActivity extends AppCompatActivity {
         });
     }
 
-    private ArrayList<PaperOnboardingPage> getPaperOnboardingPages(){
+    private ArrayList<PaperOnboardingPage> getPaperOnboardingPages() {
         PaperOnboardingPage scr1 = new PaperOnboardingPage("Nhóm 8",
                 "Chào mừng bạn đến với bài tập của nhóm 8",
                 Color.parseColor("#9999ff"), R.drawable.logoapp, R.drawable.ic_baseline_search_24);

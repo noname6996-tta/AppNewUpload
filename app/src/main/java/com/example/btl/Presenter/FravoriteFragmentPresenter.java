@@ -34,8 +34,8 @@ public class FravoriteFragmentPresenter {
         this.favoriteFragmentInterface = favoriteFragmentInterface;
     }
 
-    public void addtofaList(){
-        FarvoriteModel.readFarvoiteList(mContext,favoriteFragmentCallBack,favoriteFragmentInterface);
+    public void addtofaList() {
+        FarvoriteModel.readFarvoiteList(mContext, favoriteFragmentCallBack, favoriteFragmentInterface);
     }
 
 }

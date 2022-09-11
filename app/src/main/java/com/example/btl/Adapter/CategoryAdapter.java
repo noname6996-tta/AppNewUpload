@@ -19,7 +19,7 @@ import com.example.btl.R;
 
 import java.util.List;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>  {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
     private List<Category> mCategoryList;
     private Context mContext;
     private CategoryAdapterPresenter categoryAdapterPresenter;
@@ -28,17 +28,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         this.mCategoryList = mCategoryList;
         this.mContext = mContext;
     }
+
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_category,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_category, parent, false);
         return new CategoryViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Category category = mCategoryList.get(position);
-        if (category == null){
+        if (category == null) {
             return;
         }
         holder.tv_category.setText(category.getType());
@@ -47,22 +48,24 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             @Override
             public void onClick(View view) {
                 categoryAdapterPresenter = new CategoryAdapterPresenter(mContext);
-                categoryAdapterPresenter.loadData(category,mContext);
+                categoryAdapterPresenter.loadData(category, mContext);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        if (mCategoryList != null){
+        if (mCategoryList != null) {
             return mCategoryList.size();
         }
         return 0;
     }
-    public class  CategoryViewHolder extends RecyclerView.ViewHolder{
+
+    public class CategoryViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout liner_category;
         private ImageView img_category;
         private TextView tv_category;
+
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             liner_category = itemView.findViewById(R.id.liner_category);

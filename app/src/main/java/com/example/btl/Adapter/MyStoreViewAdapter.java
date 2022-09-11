@@ -20,11 +20,15 @@ public class MyStoreViewAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position){
-            case 0: return new StoreInformationFragment();
-            case 1: return new StorerattingFragment();
-            case 2: return new StoreLocationFragment();
-            default: return new StoreInformationFragment();
+        switch (position) {
+            case 0:
+                return new StoreInformationFragment();
+            case 1:
+                return new StorerattingFragment();
+            case 2:
+                return new StoreLocationFragment();
+            default:
+                return new StoreInformationFragment();
         }
     }
 

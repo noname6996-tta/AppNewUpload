@@ -14,7 +14,7 @@ public class UpdateRattingPresenter {
         this.updateRatingInterface = updateRatingInterface;
     }
 
-    public void updateRatting_Store(Integer id_ratting,Float star_rating,String comment_sating){
-        RattingModel.updateRatting(context,id_ratting,star_rating,comment_sating,updateRatingInterface);
+    public void updateRatting_Store(Integer id_ratting, Float star_rating, String comment_sating) {
+        RattingModel.updateRatting(context, id_ratting, star_rating, comment_sating, updateRatingInterface);
     }
 }

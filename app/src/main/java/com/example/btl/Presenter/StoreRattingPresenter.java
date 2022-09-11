@@ -17,10 +17,11 @@ public class StoreRattingPresenter {
         this.sotreRattingCallback = sotreRattingCallback;
     }
 
-    public void insertRattingtoRatting(){
-        RattingModel.readRattingListinStoreRatting(context,sotreRattingCallback);
+    public void insertRattingtoRatting() {
+        RattingModel.readRattingListinStoreRatting(context, sotreRattingCallback);
     }
-    public void checkCanComment(Integer idstore,Integer iduser){
-        RattingModel.checkCanComment(idstore,iduser,storeRattingInterface,context);
+
+    public void checkCanComment(Integer idstore, Integer iduser) {
+        RattingModel.checkCanComment(idstore, iduser, storeRattingInterface, context);
     }
 }

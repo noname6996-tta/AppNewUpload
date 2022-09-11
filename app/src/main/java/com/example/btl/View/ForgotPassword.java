@@ -20,15 +20,18 @@ public class ForgotPassword extends AppCompatActivity implements ForGotPassInter
     private Button button;
     private ForGotPassPresenter forGotPassPresenter;
     int pass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
-        forGotPassPresenter = new ForGotPassPresenter(ForgotPassword.this,this);
+        mapping();
+    }
+
+    public void mapping() {
+        forGotPassPresenter = new ForGotPassPresenter(ForgotPassword.this, this);
         email = findViewById(R.id.email);
-
         button = findViewById(R.id.btn);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,22 +39,21 @@ public class ForgotPassword extends AppCompatActivity implements ForGotPassInter
             }
         });
     }
+
     private void senEmail() {
         Random random = new Random();
         pass = random.nextInt(999999);
         String mEmail = email.getText().toString();
         forGotPassPresenter.sendMailAndChangePass(mEmail, String.valueOf(pass));
-        String mSubject = "Gửi mật khẩu mới cho tài khoản "+mEmail;
-        String mMessage = "mật khẩu mới của bạn là: "+pass +" \n Vui lòng thay đổi mật khẩu sau khi đăng nhập";
-
+        String mSubject = "Gửi mật khẩu mới cho tài khoản " + mEmail;
+        String mMessage = "mật khẩu mới của bạn là: " + pass + " \n Vui lòng thay đổi mật khẩu sau khi đăng nhập";
         JavaMailAPI javaMailAPI = new JavaMailAPI(this, mEmail, mSubject, mMessage);
-
         javaMailAPI.execute();
     }
 
     @Override
     public void haveBug(String e) {
-        Toast.makeText(this, "Lỗi:"+e, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Lỗi:" + e, Toast.LENGTH_SHORT).show();
     }
 
     @Override

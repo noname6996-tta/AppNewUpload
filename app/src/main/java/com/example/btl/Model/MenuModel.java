@@ -9,15 +9,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.btl.Interface.CallBack.Store_Info_CallBack;
+import com.example.btl.Interface.CallBack.StoreInfoCallBack;
 import com.example.btl.View.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MenuModel {
-    public static void readMenuList(Integer id1,Context mContext, Store_Info_CallBack store_info_callBack) {
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/menu/selectmenu.php";
+    public static void readMenuList(Integer id1, Context mContext, StoreInfoCallBack store_info_callBack) {
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/menu/selectmenu.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -33,16 +33,13 @@ public class MenuModel {
                                 String imageDish = jsonObject.getString("imageDish");
                                 String nameDish = jsonObject.getString("nameDish");
                                 String priceDish = jsonObject.getString("priceDish");
-                                Menu menu = new Menu(id,id_store,imageDish,nameDish,priceDish);
-                                if (id1.equals(id_store)){
+                                Menu menu = new Menu(id, id_store, imageDish, nameDish, priceDish);
+                                if (id1.equals(id_store)) {
                                     store_info_callBack.setMenuList(menu);
                                 }
-
                             }
-
-                        }
-                        catch (Exception exception){
-                            Log.e("EXXXXX",exception.toString());
+                        } catch (Exception exception) {
+                            Log.e("EXXXXX", exception.toString());
                         }
                     }
                 },
@@ -53,6 +50,5 @@ public class MenuModel {
                     }
                 });
         requestQueue.add(jsonArrayRequest);
-
     }
 }

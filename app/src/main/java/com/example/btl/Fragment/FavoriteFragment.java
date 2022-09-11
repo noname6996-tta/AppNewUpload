@@ -44,22 +44,24 @@ public class FavoriteFragment extends Fragment implements FavoriteFragmentCallBa
     private StoreAdapter storeAdapter;
     private Integer iduser;
     private View view;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_favorite,container,false);
+        view = inflater.inflate(R.layout.fragment_favorite, container, false);
         iduser = LoginActivity.id_user;
         initUI();
         return view;
     }
-    private void initUI(){
+
+    private void initUI() {
         rec_favorite = view.findViewById(R.id.rec_favorite);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         rec_favorite.setLayoutManager(linearLayoutManager);
         mListStore = new ArrayList<>();
-        storeAdapter = new StoreAdapter(mListStore,this.getContext());
-        fravoriteFragmentPresenter = new FravoriteFragmentPresenter(getContext(),this,this);
+        storeAdapter = new StoreAdapter(mListStore, this.getContext());
+        fravoriteFragmentPresenter = new FravoriteFragmentPresenter(getContext(), this, this);
         fravoriteFragmentPresenter.addtofaList();
         rec_favorite.setAdapter(storeAdapter);
     }

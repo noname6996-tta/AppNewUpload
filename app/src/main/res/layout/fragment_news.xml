@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/purple_500">
+    android:background="@color/purple_500"
+    android:orientation="vertical">
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
         <androidx.appcompat.widget.Toolbar
-            app:titleTextColor="@color/black"
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Tin tức"
-            >
+            app:titleTextColor="@color/black">
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -26,37 +27,39 @@
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="@color/black"></View>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
-        android:weightSum="10"
-        >
+        android:orientation="horizontal"
+        android:weightSum="10">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="7"
             android:layout_height="match_parent"
+            android:layout_weight="7"
             android:background="@color/white"
-            android:textColor="@color/black"
-            android:text="Bản tin ẩm thực"
-            android:textSize="24sp"
             android:gravity="right|center_vertical"
-            ></TextView>
+            android:text="Bản tin ẩm thực"
+            android:textColor="@color/black"
+            android:textSize="24sp"></TextView>
+
         <pl.droidsonroids.gif.GifImageView
-            android:background="@color/white"
-            android:layout_height="50dp"
             android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_weight="3"
+            android:background="@color/white"
             android:src="@drawable/news"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
+
     <ListView
-        android:background="@color/white"
+        android:id="@+id/lvNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvNews"
+        android:background="@color/white"
 
         ></ListView>
 

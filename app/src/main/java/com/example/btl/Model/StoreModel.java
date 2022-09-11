@@ -20,6 +20,7 @@ import com.example.btl.Interface.SearchFragmentInterface;
 import com.example.btl.View.MainActivity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -27,8 +28,11 @@ import java.util.List;
 import java.util.Map;
 
 public class StoreModel {
+    public static Store store;
+    public static Store store_search;
+
     public static void readStoreList(List<Store> storeList, Context context, HomeFragmentInterface homeFragmentInterface, HomeFragmentcallBack homeFragmentcallBack) {
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/store/selectStore.php";
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/store/selectStore.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -38,24 +42,12 @@ public class StoreModel {
                         try {
                             for (int i = 0; i < 9; i++) {
                                 jsonObject = response.getJSONObject(i);
-                                Integer id_store = Integer.valueOf(jsonObject.getString("id_store"));
-                                String name_store = jsonObject.getString("name_store");
-                                String address_store = jsonObject.getString("address_store");
-                                String type = jsonObject.getString("type");
-                                String timeopen = jsonObject.getString("timeopen");
-                                String phone = jsonObject.getString("phone");
-                                String lat = jsonObject.getString("lat");
-                                String lot = jsonObject.getString("lot");
-                                String linkWeb = jsonObject.getString("linkWeb");
-                                String image_store = jsonObject.getString("image_store");
-                                Float star_store = Float.valueOf(jsonObject.getString("star_store"));
-                                Store store = new Store(id_store,name_store,address_store,type,timeopen,phone,lat,lot,linkWeb,image_store,star_store);
+                                addDataToReadStore(jsonObject);
                                 homeFragmentcallBack.addToStore(store);
                             }
 
-                        }
-                        catch (Exception exception){
-                            Log.e("EXXXXX",exception.toString());
+                        } catch (Exception exception) {
+                            Log.e("EXXXXX", exception.toString());
                             homeFragmentInterface.onFail(exception.toString());
                         }
                     }
@@ -69,8 +61,25 @@ public class StoreModel {
         requestQueue.add(jsonArrayRequest);
 
     }
+
+    public static void addDataToReadStore(JSONObject jsonObject) throws JSONException {
+        Integer id_store = Integer.valueOf(jsonObject.getString("id_store"));
+        String name_store = jsonObject.getString("name_store");
+        String address_store = jsonObject.getString("address_store");
+        String type = jsonObject.getString("type");
+        String timeopen = jsonObject.getString("timeopen");
+        String phone = jsonObject.getString("phone");
+        String lat = jsonObject.getString("lat");
+        String lot = jsonObject.getString("lot");
+        String linkWeb = jsonObject.getString("linkWeb");
+        String image_store = jsonObject.getString("image_store");
+        Float star_store = Float.valueOf(jsonObject.getString("star_store"));
+        store = new Store(id_store, name_store, address_store, type, timeopen, phone, lat, lot, linkWeb, image_store, star_store);
+
+    }
+
     public static void addSearchStoreList(Context mContext, SearchFragmentInterface searchFragmentInterface, SearchRragmentCallback searchRragmentCallback) {
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/store/selectStore.php";
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/store/selectStore.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -80,24 +89,12 @@ public class StoreModel {
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 jsonObject = response.getJSONObject(i);
-                                Integer id_store = Integer.valueOf(jsonObject.getString("id_store"));
-                                String name_store = jsonObject.getString("name_store");
-                                String address_store = jsonObject.getString("address_store");
-                                String type = jsonObject.getString("type");
-                                String timeopen = jsonObject.getString("timeopen");
-                                String phone = jsonObject.getString("phone");
-                                String lat = jsonObject.getString("lat");
-                                String lot = jsonObject.getString("lot");
-                                String linkWeb = jsonObject.getString("linkWeb");
-                                String image_store = jsonObject.getString("image_store");
-                                Float star_store = Float.valueOf(jsonObject.getString("star_store"));
-                                Store store = new Store(id_store,name_store,address_store,type,timeopen,phone,lat,lot,linkWeb,image_store,star_store);
-                                searchRragmentCallback.callBack(store);
+                                addDatatoSearch(jsonObject);
+                                searchRragmentCallback.callBack(store_search);
                             }
 
-                        }
-                        catch (Exception exception){
-                            Log.e("EXXXXX",exception.toString());
+                        } catch (Exception exception) {
+                            Log.e("EXXXXX", exception.toString());
                         }
                     }
                 },
@@ -110,8 +107,25 @@ public class StoreModel {
         requestQueue.add(jsonArrayRequest);
 
     }
-    public static void updateRatting(Context context,Integer idstore,Float star){
-        String url = "http://"+MainActivity.IPLOCALHOST+"/AndroidBTL/btl/store/update_star.php";
+
+    public static void addDatatoSearch(JSONObject jsonObject) throws JSONException {
+        Integer id_store = Integer.valueOf(jsonObject.getString("id_store"));
+        String name_store = jsonObject.getString("name_store");
+        String address_store = jsonObject.getString("address_store");
+        String type = jsonObject.getString("type");
+        String timeopen = jsonObject.getString("timeopen");
+        String phone = jsonObject.getString("phone");
+        String lat = jsonObject.getString("lat");
+        String lot = jsonObject.getString("lot");
+        String linkWeb = jsonObject.getString("linkWeb");
+        String image_store = jsonObject.getString("image_store");
+        Float star_store = Float.valueOf(jsonObject.getString("star_store"));
+        store_search = new Store(id_store, name_store, address_store, type, timeopen, phone, lat, lot, linkWeb, image_store, star_store);
+
+    }
+
+    public static void updateRatting(Context context, Integer idstore, Float star) {
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/store/update_star.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -124,10 +138,10 @@ public class StoreModel {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String > map = new HashMap<>();
+                Map<String, String> map = new HashMap<>();
                 map.put("id_store", String.valueOf(idstore));
                 map.put("star_store", String.valueOf(star));
                 return map;
@@ -136,8 +150,9 @@ public class StoreModel {
 
         requestQueue.add(stringRequest);
     }
-    public static void readRattingForUpdateStore(Context mContext,Integer idstore) {
-        String url = "http://"+ MainActivity.IPLOCALHOST+"/AndroidBTL/btl/ratting/selectratting.php";
+
+    public static void readRattingForUpdateStore(Context mContext, Integer idstore) {
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/selectratting.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -154,18 +169,17 @@ public class StoreModel {
                                 Integer id_user = Integer.valueOf(jsonObject.getString("id_user"));
                                 Float ratting = Float.valueOf(jsonObject.getString("ratting"));
                                 String comment = jsonObject.getString("comment");
-                                Ratting ratting1 = new Ratting(id_rating,id_store,id_user,ratting,comment);
-                                if (id_store.equals(idstore)){
+                                Ratting ratting1 = new Ratting(id_rating, id_store, id_user, ratting, comment);
+                                if (id_store.equals(idstore)) {
                                     sumStar = sumStar + ratting;
                                     starCount++;
                                 }
 
                             }
-                            Float finalStar = Float.valueOf(sumStar/starCount);
-                            updateRatting(mContext,idstore,finalStar);
-                        }
-                        catch (Exception exception){
-                            Log.e("Fail",exception.toString());
+                            Float finalStar = Float.valueOf(sumStar / starCount);
+                            updateRatting(mContext, idstore, finalStar);
+                        } catch (Exception exception) {
+                            Log.e("Fail", exception.toString());
                         }
                     }
                 },

@@ -38,35 +38,38 @@ public class StorePresenter {
         this.storeAcitivyInterface = storeAcitivyInterface;
         this.storeAcitivyCallBack = storeAcitivyCallBack;
     }
-    public void updateStarStore_store(Integer idstore){
-        StoreModel.readRattingForUpdateStore(context,idstore);
+
+    public void updateStarStore_store(Integer idstore) {
+        StoreModel.readRattingForUpdateStore(context, idstore);
     }
-    public void readForfavorite(Store store, CheckBox checkBox){
-        FarvoriteModel.readFarvoiteListStoreAcitivy(store,context,checkBox,storeAcitivyCallBack);
+
+    public void readForfavorite(Store store, CheckBox checkBox) {
+        FarvoriteModel.readFarvoiteListStoreAcitivy(store, context, checkBox, storeAcitivyCallBack);
     }
-    public void insertForfavorite(Store store,CheckBox checkBox){
-        FarvoriteModel.insertFavorite(checkBox,store,context,storeAcitivyCallBack);
+
+    public void insertForfavorite(Store store, CheckBox checkBox) {
+        FarvoriteModel.insertFavorite(checkBox, store, context, storeAcitivyCallBack);
     }
-    public void getStartCount(int id){
-        RattingModel.readRattingList(context, id,this);
+
+    public void getStartCount(int id) {
+        RattingModel.readRattingList(context, id, this);
     }
-    public void checkStore(int idstore, Ratting ratting){
-        int count  = 0;
+
+    public void checkStore(int idstore, Ratting ratting) {
+        int count = 0;
         Float starcount = null;
-        if (idstore == ratting.getId_store()){
+        if (idstore == ratting.getId_store()) {
             starcount = starcount + Float.valueOf(ratting.getRatting());
-            count = count+1;
-            if (count !=0){
+            count = count + 1;
+            if (count != 0) {
                 Float finalstar = starcount / count;
                 storeAcitivyInterface.addString(finalstar.toString());
                 storeAcitivyInterface.addSuccess();
-            }
-            else {
+            } else {
                 storeAcitivyInterface.addString("0");
             }
             storeAcitivyInterface.deleteSuccess();
-        }
-        else {
+        } else {
 
         }
     }

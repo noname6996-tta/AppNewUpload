@@ -40,27 +40,27 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
     @NonNull
     @Override
     public StoreViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_store,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_store, parent, false);
         return new StoreViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull StoreViewHolder holder, int position) {
         Store store = mStore.get(position);
-        if (store == null){
+        if (store == null) {
             return;
         }
-        StoreModel.readRattingForUpdateStore(mContext,store.getId_store());
-        holder.tv_NameStore.setText(store.getName_store());
+        StoreModel.readRattingForUpdateStore(mContext, store.getId_store());
+        holder.tv_name_store.setText(store.getName_store());
         Glide.with(mContext).load(store.getImage_store()).error(R.drawable.ic_launcher_background).into(holder.img_store);
-        holder.tv_AddressStore.setText("Địa chỉ: "+store.getAddress_store());
-        holder.tv_StarStore.setText(store.getStar_store()+" sao");
+        holder.tv_address_store.setText("Địa chỉ: " + store.getAddress_store());
+        holder.tv_star_store.setText(store.getStar_store() + " sao");
         holder.items_card_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, StoreActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("store",store);
+                bundle.putSerializable("store", store);
                 intent.putExtras(bundle);
                 mContext.startActivity(intent);
             }
@@ -69,39 +69,40 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
     @Override
     public int getItemCount() {
-        if (mStore != null){
+        if (mStore != null) {
             return mStore.size();
         }
         return 0;
     }
 
 
-
-    public class StoreViewHolder extends RecyclerView.ViewHolder{
+    public class StoreViewHolder extends RecyclerView.ViewHolder {
         private CardView items_card_store;
         private ImageView img_store;
-        private TextView tv_NameStore,tv_AddressStore,tv_StarStore;
+        private TextView tv_name_store, tv_address_store, tv_star_store;
+
         public StoreViewHolder(@NonNull View itemView) {
             super(itemView);
             items_card_store = itemView.findViewById(R.id.items_card_store);
             img_store = itemView.findViewById(R.id.img_store);
-            tv_NameStore = itemView.findViewById(R.id.tv_NameStore);
-            tv_AddressStore = itemView.findViewById(R.id.tv_AddressStore);
-            tv_StarStore = itemView.findViewById(R.id.tv_StarStore);
+            tv_name_store = itemView.findViewById(R.id.tv_name_store);
+            tv_address_store = itemView.findViewById(R.id.tv_address_store);
+            tv_star_store = itemView.findViewById(R.id.tv_star_store);
         }
     }
+
     @Override
     public Filter getFilter() {
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String srcSearch = charSequence.toString();
-                if (srcSearch.isEmpty()){
+                if (srcSearch.isEmpty()) {
                     mStore = mStoreold;
                 } else {
                     List<Store> list = new ArrayList<>();
-                    for(Store store : mStoreold){
-                        if (store.getName_store().toLowerCase().contains(srcSearch.toLowerCase())){
+                    for (Store store : mStoreold) {
+                        if (store.getName_store().toLowerCase().contains(srcSearch.toLowerCase())) {
                             list.add(store);
                         }
                     }
@@ -111,6 +112,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
                 filterResults.values = mStore;
                 return filterResults;
             }
+
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 mStore = (List<Store>) filterResults.values;

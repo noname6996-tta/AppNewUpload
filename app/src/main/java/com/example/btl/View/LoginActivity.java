@@ -1,6 +1,7 @@
 package com.example.btl.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
     private EditText edt_Email;
     private EditText edt_password;
     private Button btn_Login;
-    private TextView tv_loginfail,tv_forgotpass;
+    private TextView tv_loginfail, tv_forgotpass;
     private LinearLayout layout_singUp;
     private LoginPeresenter loginPeresenter;
     public static Integer id_user;
@@ -36,19 +37,23 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
     }
 
     private void initUi() {
-        loginPeresenter = new LoginPeresenter(LoginActivity.this,this);
+        loginPeresenter = new LoginPeresenter(LoginActivity.this, this);
         layout_singUp = findViewById(R.id.layout_singUp);
         edt_Email = findViewById(R.id.edt_Email);
         edt_password = findViewById(R.id.edt_password);
         tv_loginfail = findViewById(R.id.tv_loginfail);
         tv_forgotpass = findViewById(R.id.tv_forgotpass);
         btn_Login = findViewById(R.id.btn_Login);
+        onCLiclItems();
+    }
+
+    public void onCLiclItems() {
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = edt_Email.getText().toString().trim();
                 String pass = edt_password.getText().toString().trim();
-                loginPeresenter.loginAccount(email,pass);
+                loginPeresenter.loginAccount(email, pass);
             }
         });
         layout_singUp.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
         tv_forgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,ForgotPassword.class);
+                Intent intent = new Intent(LoginActivity.this, ForgotPassword.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
     @Override
     public void loginSuccess() {
         Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
@@ -79,8 +84,9 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface {
         tv_loginfail.setVisibility(View.VISIBLE);
         tv_loginfail.setText("Đăng nhập không thành công");
     }
+
     @Override
-     public boolean checkEditText(String editText) {
+    public boolean checkEditText(String editText) {
         if (editText.trim().length() > 0)
             return true;
         else {

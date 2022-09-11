@@ -26,8 +26,9 @@ public class AccountFragmentPresenter {
         this.mContext = mContext;
         this.accountFragmentCallBack = accountFragmentCallBack;
     }
-    public void addInfoAccount(){
-        AccountModel.readUserList(mContext,accountFragmentCallBack);
+
+    public void addInfoAccount() {
+        AccountModel.readUserList(mContext, accountFragmentCallBack);
     }
 
 }

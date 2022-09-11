@@ -24,6 +24,7 @@ public class UpdateRattingActivity extends AppCompatActivity implements UpdateRa
     private int id_ratting;
     private Float star;
     private UpdateRattingPresenter updateRattingPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,17 +36,17 @@ public class UpdateRattingActivity extends AppCompatActivity implements UpdateRa
     private void getData() {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        if (bundle == null){
+        if (bundle == null) {
             return;
         }
         id_ratting = bundle.getInt("id_update");
-        tv_update_ratting.setText("Bạn đánh giá:"+bundle.getFloat("ratting_update")+" sao");
+        tv_update_ratting.setText("Bạn đánh giá:" + bundle.getFloat("ratting_update") + " sao");
         ratingBarYours_update.setRating(bundle.getFloat("ratting_update"));
         edt_update_comment_ratting.setText(bundle.getString("comment_update"));
     }
 
     private void initUi() {
-        updateRattingPresenter = new UpdateRattingPresenter(UpdateRattingActivity.this,this);
+        updateRattingPresenter = new UpdateRattingPresenter(UpdateRattingActivity.this, this);
         ratingBarYours_update = findViewById(R.id.ratingBarYours_update);
         tv_update_ratting = findViewById(R.id.tv_update_ratting);
         edt_update_comment_ratting = findViewById(R.id.edt_update_comment_ratting);
@@ -53,14 +54,14 @@ public class UpdateRattingActivity extends AppCompatActivity implements UpdateRa
         ratingBarYours_update.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                tv_update_ratting.setText("Bạn đánh giá: "+ v +" sao");
+                tv_update_ratting.setText("Bạn đánh giá: " + v + " sao");
                 star = v;
             }
         });
         btn_update_Ratting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateRattingPresenter.updateRatting_Store(id_ratting,star,edt_update_comment_ratting.getText().toString().trim());
+                updateRattingPresenter.updateRatting_Store(id_ratting, star, edt_update_comment_ratting.getText().toString().trim());
             }
         });
     }
@@ -73,6 +74,6 @@ public class UpdateRattingActivity extends AppCompatActivity implements UpdateRa
     @Override
     public void onFail(String e) {
         Toast.makeText(this, "Thay đổi đánh giá có lỗi", Toast.LENGTH_SHORT).show();
-        Log.e("Update_ratting_bug",e.toString());
+        Log.e("Update_ratting_bug", e.toString());
     }
 }

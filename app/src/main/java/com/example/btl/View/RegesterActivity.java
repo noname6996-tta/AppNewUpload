@@ -31,9 +31,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegesterActivity extends AppCompatActivity implements RegesterInterface {
-    private EditText edt_reger_email,edt_reges_pass;
-    private Button btn_Reges;
+    private EditText edt_reger_email, edt_reges_pass;
+    private Button btn_reges;
     private RegseterPresenter regseterPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +45,14 @@ public class RegesterActivity extends AppCompatActivity implements RegesterInter
     private void initUI() {
         edt_reger_email = findViewById(R.id.edt_reger_email);
         edt_reges_pass = findViewById(R.id.edt_reges_pass);
-        btn_Reges = findViewById(R.id.btn_Reges);
-        regseterPresenter = new RegseterPresenter(getApplicationContext(),this);
-        btn_Reges.setOnClickListener(new View.OnClickListener() {
+        btn_reges = findViewById(R.id.btn_reges);
+        regseterPresenter = new RegseterPresenter(getApplicationContext(), this);
+        btn_reges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = edt_reger_email.getText().toString().trim();
                 String pass = edt_reges_pass.getText().toString().trim();
-                regseterPresenter.regesterCheck(email,pass);
+                regseterPresenter.regesterCheck(email, pass);
             }
         });
     }
@@ -69,12 +70,12 @@ public class RegesterActivity extends AppCompatActivity implements RegesterInter
     @Override
     public void onSuccess() {
         Toast.makeText(RegesterActivity.this, "Đăng ký thành công, đăng nhập lại để sử dụng", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(RegesterActivity.this,LoginActivity.class);
+        Intent intent = new Intent(RegesterActivity.this, LoginActivity.class);
         RegesterActivity.this.startActivity(intent);
     }
 
     @Override
     public void onfail(String email) {
-        Toast.makeText(this, "Tài khoản: "+email+ " đã tồn tại", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Tài khoản: " + email + " đã tồn tại", Toast.LENGTH_SHORT).show();
     }
 }

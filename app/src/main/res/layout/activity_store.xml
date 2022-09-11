@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/img_StoreBack"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                android:background="@color/purple_500"></ImageView>
-            <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            >
-
-            <androidx.appcompat.widget.Toolbar
-                app:titleTextColor="@color/black"
-                android:id="@+id/toolBar_store"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
                 android:background="@color/purple_500"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:title="Trang chủ"
-                >
+                android:src="@drawable/ic_baseline_arrow_back_24"></ImageView>
 
-            </androidx.appcompat.widget.Toolbar>
-        </com.google.android.material.appbar.AppBarLayout>
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolBar_store"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/purple_500"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:title="Trang chủ"
+                    app:titleTextColor="@color/black">
+
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center_horizontal"
-            >
+            android:orientation="vertical">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_paeger_store"
@@ -54,29 +54,31 @@
                 android:layout_height="220dp">
 
             </androidx.viewpager2.widget.ViewPager2>
+
             <me.relex.circleindicator.CircleIndicator3
                 android:id="@+id/circle_indercator3_store"
                 android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_height="40dp"
-                app:ci_drawable="@drawable/background_indicator"
-                >
+                app:ci_drawable="@drawable/background_indicator">
 
             </me.relex.circleindicator.CircleIndicator3>
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="10">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
-                android:paddingLeft="10dp"
                 android:orientation="vertical"
-                >
+                android:paddingLeft="10dp">
+
                 <TextView
                     android:id="@+id/store_name"
                     android:layout_width="wrap_content"
@@ -87,16 +89,18 @@
                     android:textStyle="bold"
 
                     ></TextView>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_marginRight="5dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
                         android:src="@drawable/ic_baseline_star_rate_24"></ImageView>
+
                     <TextView
                         android:id="@+id/store_star"
                         android:layout_width="wrap_content"
@@ -104,24 +108,26 @@
                         android:text="4.6"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        ></TextView>
+                        android:textStyle="bold"></TextView>
                 </LinearLayout>
 
             </LinearLayout>
+
             <CheckBox
-                android:checked="false"
-                android:id="@+id/chkLove"
+                android:id="@+id/chk_love"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:button="@drawable/checkbox_selector"
-                android:layout_width="50dp"
-                android:layout_height="50dp"></CheckBox>
+                android:checked="false"></CheckBox>
         </LinearLayout>
+
         <View
-            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="1dp"></View>
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"></View>
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView_store"
             android:layout_width="match_parent"
@@ -131,10 +137,10 @@
             app:itemIconTint="@color/custom_color_bottom_nav"
             app:itemTextColor="@color/custom_color_bottom_nav"
             app:menu="@menu/menu_bottomnavigation_store"></com.google.android.material.bottomnavigation.BottomNavigationView>
+
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="600dp"
             android:id="@+id/content_frame"
-            ></FrameLayout>
+            android:layout_width="match_parent"
+            android:layout_height="600dp"></FrameLayout>
     </LinearLayout>
 </ScrollView>

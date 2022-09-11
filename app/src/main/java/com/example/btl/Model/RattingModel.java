@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class RattingModel {
     public static void readRattingList(Context context, int id, StorePresenter storePresenter) {
-        String url = "http://"+ MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/ratting/selectratting.php";
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/selectratting.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -49,13 +49,12 @@ public class RattingModel {
                                 Integer id_user = Integer.valueOf(jsonObject.getString("id_user"));
                                 Float ratting = Float.valueOf(jsonObject.getString("ratting"));
                                 String comment = jsonObject.getString("comment");
-                                Ratting ratting1 = new Ratting(id_rating,id_store,id_user,ratting,comment);
-                                storePresenter.checkStore(id,ratting1);
+                                Ratting ratting1 = new Ratting(id_rating, id_store, id_user, ratting, comment);
+                                storePresenter.checkStore(id, ratting1);
                             }
 
-                        }
-                        catch (Exception exception){
-                            Log.d("Fail in rattingModel",exception.toString());
+                        } catch (Exception exception) {
+                            Log.d("Fail in rattingModel", exception.toString());
                         }
                     }
                 },
@@ -67,8 +66,9 @@ public class RattingModel {
                 });
         requestQueue.add(jsonArrayRequest);
     }
+
     public static void readRattingListinStoreRatting(Context mContext, SotreRattingCallback sotreRattingCallback) {
-        String url = "http://"+ MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/ratting/selectratting.php";
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/selectratting.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -83,13 +83,12 @@ public class RattingModel {
                                 Integer id_user = Integer.valueOf(jsonObject.getString("id_user"));
                                 Float ratting = Float.valueOf(jsonObject.getString("ratting"));
                                 String comment = jsonObject.getString("comment");
-                                Ratting ratting1 = new Ratting(id_rating,id_store,id_user,ratting,comment);
-                                sotreRattingCallback.checkId_store(id_store,ratting1);
+                                Ratting ratting1 = new Ratting(id_rating, id_store, id_user, ratting, comment);
+                                sotreRattingCallback.checkId_store(id_store, ratting1);
 
                             }
-                        }
-                        catch (Exception exception){
-                            Log.d("Fail",exception.toString());
+                        } catch (Exception exception) {
+                            Log.d("Fail", exception.toString());
                         }
                     }
                 },
@@ -101,8 +100,9 @@ public class RattingModel {
                 });
         requestQueue.add(jsonArrayRequest);
     }
-    public static void addRatting(Ratting ratting, Context mContext, RattingInterface rattingInterface){
-        String url = "http://"+ MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/ratting/insertratting.php";
+
+    public static void addRatting(Ratting ratting, Context mContext, RattingInterface rattingInterface) {
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/insertratting.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -116,21 +116,22 @@ public class RattingModel {
             public void onErrorResponse(VolleyError error) {
                 rattingInterface.failRespon(error.toString());
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String > map = new HashMap<>();
+                Map<String, String> map = new HashMap<>();
                 map.put("id_store", String.valueOf(ratting.getId_store()));
-                map.put("id_user",String.valueOf(ratting.getId_user()));
+                map.put("id_user", String.valueOf(ratting.getId_user()));
                 map.put("ratting", String.valueOf(ratting.getRatting()));
-                map.put("comment",ratting.getComment());
+                map.put("comment", ratting.getComment());
                 return map;
             }
         };
         requestQueue.add(stringRequest);
     }
+
     public static void checkCanComment(Integer id_store, Integer id_user, StoreRattingInterface storeRattingInterface, Context mContext) {
-        StringRequest requestLogin = new StringRequest(Request.Method.POST, "http://"+MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/ratting/checkRatting.php",
+        StringRequest requestLogin = new StringRequest(Request.Method.POST, "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/checkRatting.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -142,13 +143,13 @@ public class RattingModel {
                                 Ratting ratting = new Ratting();
                                 ratting.setId_user(Integer.valueOf(jsonObject.getString("id_user")));
                                 ratting.setId_store(Integer.valueOf(jsonObject.getString("id_store")));
-                                String id_user= jsonObject.getString("id_user");
-                                String id_store= jsonObject.getString("id_store");
+                                String id_user = jsonObject.getString("id_user");
+                                String id_store = jsonObject.getString("id_store");
                                 storeRattingInterface.onCannotRattong();
 
                             } else {
                                 message = jsonObject.getString("message");
-                                Log.d("checkRatting",message.toString());
+                                Log.d("checkRatting", message.toString());
                                 Intent intent = new Intent(mContext, RankingActivity.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("a", id_store);
@@ -177,8 +178,9 @@ public class RattingModel {
         RequestQueue queue = Volley.newRequestQueue(mContext);
         queue.add(requestLogin);
     }
-    public static void deleteRatting(Context context,Integer idRatting){
-        String url = "http://"+MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/ratting/delete.php";
+
+    public static void deleteRatting(Context context, Integer idRatting) {
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/delete.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -191,10 +193,10 @@ public class RattingModel {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String > map = new HashMap<>();
+                Map<String, String> map = new HashMap<>();
                 map.put("id_rating", String.valueOf(idRatting));
                 return map;
             }
@@ -202,8 +204,9 @@ public class RattingModel {
 
         requestQueue.add(stringRequest);
     }
-    public static void updateRatting(Context context, Integer idratting, Float ratting, String comment, UpdateRatingInterface updateRatingInterface){
-        String url = "http://"+MainActivity.IP_LOCALHOST+"/AndroidBTL/btl/ratting/update.php";
+
+    public static void updateRatting(Context context, Integer idratting, Float ratting, String comment, UpdateRatingInterface updateRatingInterface) {
+        String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -216,13 +219,13 @@ public class RattingModel {
             public void onErrorResponse(VolleyError error) {
                 updateRatingInterface.onFail(error.toString());
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String > map = new HashMap<>();
+                Map<String, String> map = new HashMap<>();
                 map.put("id_rating", String.valueOf(idratting));
                 map.put("ratting", String.valueOf(ratting));
-                map.put("comment",comment);
+                map.put("comment", comment);
                 return map;
             }
         };

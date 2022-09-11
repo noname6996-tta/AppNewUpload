@@ -51,7 +51,7 @@ public class JavaMailAPI extends AsyncTask<Void, Void, Void> {
             mimeMessage.setText(message);
             Transport.send(mimeMessage);
         } catch (MessagingException e) {
-            Log.e("AAA",e.toString());
+            Log.e("AAA", e.toString());
         }
 
         return null;
