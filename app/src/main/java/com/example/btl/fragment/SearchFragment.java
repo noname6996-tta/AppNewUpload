@@ -21,8 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btl.adapter.StoreAdapter;
-import com.example.btl.myinterface.callback.SearchRragmentCallback;
-import com.example.btl.myinterface.SearchFragmentInterface;
+import com.example.btl.myinterface.callback.Searching;
+import com.example.btl.myinterface.CheckSearchItems;
 import com.example.btl.model.Items_Suggest;
 import com.example.btl.model.Store;
 import com.example.btl.presenter.SearchFragmentPresenter;
@@ -31,7 +31,7 @@ import com.example.btl.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchFragment extends Fragment implements SearchFragmentInterface, SearchRragmentCallback {
+public class SearchFragment extends Fragment implements CheckSearchItems, Searching {
     private View view;
     private List<Store> mListStore;
     private List<Items_Suggest> items_suggestList;

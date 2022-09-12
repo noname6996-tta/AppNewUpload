@@ -18,9 +18,9 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.btl.myinterface.ForGotPassInterface;
-import com.example.btl.myinterface.LoginInterface;
-import com.example.btl.myinterface.RegesterInterface;
+import com.example.btl.myinterface.ForGotPass;
+import com.example.btl.myinterface.CheckLogin;
+import com.example.btl.myinterface.CheckRegister;
 import com.example.btl.view.LoginActivity;
 import com.example.btl.view.MainActivity;
 
@@ -71,7 +71,7 @@ public class UserModel {
         requestQueue.add(jsonArrayRequest);
     }
 
-    public static void checkLogin(String email1, String password1, Context context, LoginInterface login) {
+    public static void checkLogin(String email1, String password1, Context context, CheckLogin login) {
         StringRequest requestLogin = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
                     @Override
@@ -118,8 +118,8 @@ public class UserModel {
         queue.add(requestLogin);
     }
 
-    public static void regesterAccount(final String email1, final String password1, RegesterInterface regesterInterface, Context mContext) {
-        if (regesterInterface.checkEditText(email1) && regesterInterface.checkEditText(password1)) {
+    public static void regesterAccount(final String email1, final String password1, CheckRegister checkRegister, Context mContext) {
+        if (checkRegister.checkEditText(email1) && checkRegister.checkEditText(password1)) {
             StringRequest requestLogin = new StringRequest(Request.Method.POST, "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/user/checkuser.php",
                     new Response.Listener<String>() {
                         @Override
@@ -132,13 +132,13 @@ public class UserModel {
                                     User user = new User();
                                     user.setEmail(jsonObject.getString("email"));
                                     String email = jsonObject.getString("email");
-                                    regesterInterface.onfail(email);
+                                    checkRegister.onfail(email);
 
                                 } else {
                                     message = jsonObject.getString("message");
                                     Log.d("CheckRes", message.toString());
                                     addUser(email1, password1, mContext);
-                                    regesterInterface.onSuccess();
+                                    checkRegister.onSuccess();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -189,7 +189,7 @@ public class UserModel {
         requestQueue.add(stringRequest);
     }
 
-    public static void updateUser(String emailChange, String passChange, Context context, ForGotPassInterface forGotPassInterface) {
+    public static void updateUser(String emailChange, String passChange, Context context, ForGotPass forGotPassInterface) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/user/updatePassWord.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,

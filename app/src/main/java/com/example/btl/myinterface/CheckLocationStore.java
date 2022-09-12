@@ -1,6 +1,6 @@
 package com.example.btl.myinterface;
 
-public interface CategoryInterface {
+public interface CheckLocationStore {
     void onNullItems();
-    void failRespon();
+
 }

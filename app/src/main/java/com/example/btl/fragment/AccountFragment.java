@@ -35,7 +35,7 @@ import com.example.btl.view.LoginActivity;
 import com.example.btl.view.YouTubeActivity;
 
 
-public class CheckAccount extends Fragment implements CheckAccountView {
+public class AccountFragment extends Fragment implements CheckAccountView {
     private ImageView img_account;
     private TextView tv_name_account, tv_date_account, tv_address_account, tv_email_account, tv_phone_account;
     private TextView btn_change_account, btn_logout, btn_open_youtube;

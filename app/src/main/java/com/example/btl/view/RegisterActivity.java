@@ -9,11 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.btl.myinterface.RegesterInterface;
+import com.example.btl.myinterface.CheckRegister;
 import com.example.btl.presenter.RegisterPresenter;
 import com.example.btl.R;
 
-public class RegisterActivity extends AppCompatActivity implements RegesterInterface {
+public class RegisterActivity extends AppCompatActivity implements CheckRegister {
     private EditText edt_reger_email, edt_reges_pass;
     private Button btn_reges;
     private RegisterPresenter registerPresenter;

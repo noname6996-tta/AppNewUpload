@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btl.adapter.MenuAdapter;
-import com.example.btl.myinterface.callback.StoreInfoCallBack;
+import com.example.btl.myinterface.callback.AddMenuList;
 import com.example.btl.model.Menu;
 import com.example.btl.model.Store;
 import com.example.btl.presenter.StoreInformationPresenter;
@@ -27,7 +27,7 @@ import com.example.btl.view.StoreActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoreInformationFragment extends Fragment implements StoreInfoCallBack {
+public class StoreInformationFragment extends Fragment implements AddMenuList {
     private View view;
     private TextView tv_store_timeopen, tv_store_phone, tv_store_web, tv_store_address;
     private RecyclerView rec_Menu;

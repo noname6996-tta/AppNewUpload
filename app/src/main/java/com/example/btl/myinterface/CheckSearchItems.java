@@ -1,6 +1,6 @@
 package com.example.btl.myinterface;
 
-public interface SearchFragmentInterface {
+public interface CheckSearchItems {
     void onSuccess();
     void onFail();
 }

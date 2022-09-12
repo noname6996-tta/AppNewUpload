@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btl.adapter.StoreAdapter;
 import com.example.btl.myinterface.callback.AddFavoriteView;
-import com.example.btl.myinterface.FavoriteFragmentInterface;
+import com.example.btl.myinterface.CheckAddFavorite;
 import com.example.btl.model.Store;
 import com.example.btl.presenter.FravoriteFragmentPresenter;
 import com.example.btl.R;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AddFavorite extends Fragment implements AddFavoriteView, FavoriteFragmentInterface {
+public class FavoriteFragment extends Fragment implements AddFavoriteView, CheckAddFavorite {
     private FravoriteFragmentPresenter fravoriteFragmentPresenter;
     private RecyclerView rec_favorite;
     private List<Store> mListStore;

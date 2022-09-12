@@ -8,14 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.btl.myinterface.ForGotPassInterface;
+import com.example.btl.myinterface.ForGotPass;
 import com.example.btl.mail.JavaMailAPI;
 import com.example.btl.presenter.ForGotPassPresenter;
 import com.example.btl.R;
 
 import java.util.Random;
 
-public class ChangePasswordActivity extends AppCompatActivity implements ForGotPassInterface {
+public class ChangePasswordActivity extends AppCompatActivity implements ForGotPass {
     private EditText email;
     private Button button;
     private ForGotPassPresenter forGotPassPresenter;

@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.btl.myinterface.CategoryAdaInterface;
+import com.example.btl.myinterface.CheckAddCategory;
 import com.example.btl.model.Category;
 import com.example.btl.view.SearchCategoryActivity;
 
 public class CategoryAdapterPresenter {
     private Context context;
-    CategoryAdaInterface categoryAdaInterface;
+    CheckAddCategory checkAddCategory;
 
     public CategoryAdapterPresenter(Context mContext) {
         this.context = mContext;

@@ -1,6 +1,6 @@
 package com.example.btl.myinterface;
 
-public interface ChangeAccountInterface {
+public interface CheckAccountUpdate {
     void onSuccess();
     void onFailtoUpdate();
     void onFail();

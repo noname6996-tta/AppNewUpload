@@ -19,8 +19,8 @@ import com.example.btl.adapter.PhotoAdapter;
 import com.example.btl.fragment.StoreInformationFragment;
 import com.example.btl.fragment.StoreLocationFragment;
 import com.example.btl.fragment.StoreRankFragment;
-import com.example.btl.myinterface.callback.StoreAcitivyCallBack;
-import com.example.btl.myinterface.StoreAcitivyInterface;
+import com.example.btl.myinterface.callback.CheckFavorite;
+import com.example.btl.myinterface.CheckAddStoreItems;
 import com.example.btl.model.Photo;
 import com.example.btl.model.Store;
 import com.example.btl.presenter.StorePresenter;
@@ -33,7 +33,7 @@ import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator3;
 
-public class StoreActivity extends AppCompatActivity implements StoreAcitivyInterface, StoreAcitivyCallBack {
+public class StoreActivity extends AppCompatActivity implements CheckAddStoreItems, CheckFavorite {
     private CheckBox chk_love;
     private ViewPager2 mviewPager2;
     private CircleIndicator3 mcircleIndicator3;

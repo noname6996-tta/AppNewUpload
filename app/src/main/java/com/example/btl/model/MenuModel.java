@@ -9,14 +9,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.btl.myinterface.callback.StoreInfoCallBack;
+import com.example.btl.myinterface.callback.AddMenuList;
 import com.example.btl.view.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MenuModel {
-    public static void readMenuList(Integer id1, Context mContext, StoreInfoCallBack store_info_callBack) {
+    public static void readMenuList(Integer id1, Context mContext, AddMenuList store_info_callBack) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/menu/selectmenu.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,

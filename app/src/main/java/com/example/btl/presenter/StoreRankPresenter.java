@@ -2,26 +2,26 @@ package com.example.btl.presenter;
 
 import android.content.Context;
 
-import com.example.btl.myinterface.callback.SotreRattingCallback;
-import com.example.btl.myinterface.StoreRattingInterface;
+import com.example.btl.myinterface.callback.Ratting;
+import com.example.btl.myinterface.CheckAddRankStore;
 import com.example.btl.model.RankModel;
 
 public class StoreRankPresenter {
     public Context context;
-    public StoreRattingInterface storeRattingInterface;
-    private SotreRattingCallback sotreRattingCallback;
+    public CheckAddRankStore checkAddRankStore;
+    private Ratting ratting;
 
-    public StoreRankPresenter(Context context, StoreRattingInterface storeRattingInterface, SotreRattingCallback sotreRattingCallback) {
+    public StoreRankPresenter(Context context, CheckAddRankStore checkAddRankStore, Ratting ratting) {
         this.context = context;
-        this.storeRattingInterface = storeRattingInterface;
-        this.sotreRattingCallback = sotreRattingCallback;
+        this.checkAddRankStore = checkAddRankStore;
+        this.ratting = ratting;
     }
 
     public void insertRattingtoRatting() {
-        RankModel.readRattingListinStoreRatting(context, sotreRattingCallback);
+        RankModel.readRattingListinStoreRatting(context, ratting);
     }
 
     public void checkCanComment(Integer idstore, Integer iduser) {
-        RankModel.checkCanComment(idstore, iduser, storeRattingInterface, context);
+        RankModel.checkCanComment(idstore, iduser, checkAddRankStore, context);
     }
 }

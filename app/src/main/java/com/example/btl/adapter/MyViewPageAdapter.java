@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.btl.fragment.CheckAccount;
+import com.example.btl.fragment.AccountFragment;
 import com.example.btl.fragment.NewsFragment;
-import com.example.btl.fragment.AddFavorite;
+import com.example.btl.fragment.FavoriteFragment;
 import com.example.btl.fragment.HomeFragment;
 import com.example.btl.fragment.SearchFragment;
 
@@ -25,11 +25,11 @@ public class MyViewPageAdapter extends FragmentStateAdapter {
             case 1:
                 return new SearchFragment();
             case 2:
-                return new AddFavorite();
+                return new FavoriteFragment();
             case 3:
                 return new NewsFragment();
             case 4:
-                return new CheckAccount();
+                return new AccountFragment();
             default:
                 return new HomeFragment();
         }

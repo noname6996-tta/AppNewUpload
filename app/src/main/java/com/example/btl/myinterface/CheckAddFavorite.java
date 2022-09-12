@@ -1,5 +1,5 @@
 package com.example.btl.myinterface;
 
-public interface FavoriteFragmentInterface {
+public interface CheckAddFavorite {
     void onFail();
 }

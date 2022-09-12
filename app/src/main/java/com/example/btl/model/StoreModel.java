@@ -12,10 +12,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.btl.myinterface.callback.HomeFragmentcallBack;
-import com.example.btl.myinterface.callback.SearchRragmentCallback;
-import com.example.btl.myinterface.HomeFragmentInterface;
-import com.example.btl.myinterface.SearchFragmentInterface;
+import com.example.btl.myinterface.callback.AddDataHome;
+import com.example.btl.myinterface.callback.Searching;
+import com.example.btl.myinterface.CheckConnectHome;
+import com.example.btl.myinterface.CheckSearchItems;
 import com.example.btl.view.MainActivity;
 
 import org.json.JSONArray;
@@ -30,7 +30,7 @@ public class StoreModel {
     public static Store store;
     public static Store store_search;
 
-    public static void readStoreList(List<Store> storeList, Context context, HomeFragmentInterface homeFragmentInterface, HomeFragmentcallBack homeFragmentcallBack) {
+    public static void readStoreList(List<Store> storeList, Context context, CheckConnectHome checkConnectHome, AddDataHome addDataHome) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/store/selectStore.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -42,12 +42,12 @@ public class StoreModel {
                             for (int i = 0; i < 9; i++) {
                                 jsonObject = response.getJSONObject(i);
                                 addDataToReadStore(jsonObject);
-                                homeFragmentcallBack.addToStore(store);
+                                addDataHome.addToStore(store);
                             }
 
                         } catch (Exception exception) {
                             Log.e("EXXXXX", exception.toString());
-                            homeFragmentInterface.onFail(exception.toString());
+                            checkConnectHome.onFail(exception.toString());
                         }
                     }
                 },
@@ -77,7 +77,7 @@ public class StoreModel {
 
     }
 
-    public static void addSearchStoreList(Context mContext, SearchFragmentInterface searchFragmentInterface, SearchRragmentCallback searchRragmentCallback) {
+    public static void addSearchStoreList(Context mContext, CheckSearchItems checkSearchItems, Searching searchRragmentCallback) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/store/selectStore.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -100,7 +100,7 @@ public class StoreModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        searchFragmentInterface.onFail();
+                        checkSearchItems.onFail();
                     }
                 });
         requestQueue.add(jsonArrayRequest);

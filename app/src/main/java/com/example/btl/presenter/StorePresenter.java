@@ -3,8 +3,8 @@ package com.example.btl.presenter;
 import android.content.Context;
 import android.widget.CheckBox;
 
-import com.example.btl.myinterface.callback.StoreAcitivyCallBack;
-import com.example.btl.myinterface.StoreAcitivyInterface;
+import com.example.btl.myinterface.callback.CheckFavorite;
+import com.example.btl.myinterface.CheckAddStoreItems;
 import com.example.btl.model.FarvoriteModel;
 import com.example.btl.model.Rank;
 import com.example.btl.model.RankModel;
@@ -13,14 +13,14 @@ import com.example.btl.model.StoreModel;
 
 public class StorePresenter {
     private Context context;
-    private StoreAcitivyInterface storeAcitivyInterface;
-    private StoreAcitivyCallBack storeAcitivyCallBack;
+    private CheckAddStoreItems checkAddStoreItems;
+    private CheckFavorite checkFavorite;
 
 
-    public StorePresenter(Context context, StoreAcitivyInterface storeAcitivyInterface, StoreAcitivyCallBack storeAcitivyCallBack) {
+    public StorePresenter(Context context, CheckAddStoreItems checkAddStoreItems, CheckFavorite checkFavorite) {
         this.context = context;
-        this.storeAcitivyInterface = storeAcitivyInterface;
-        this.storeAcitivyCallBack = storeAcitivyCallBack;
+        this.checkAddStoreItems = checkAddStoreItems;
+        this.checkFavorite = checkFavorite;
     }
 
     public void updateStarStore_store(Integer idstore) {
@@ -28,11 +28,11 @@ public class StorePresenter {
     }
 
     public void readForfavorite(Store store, CheckBox checkBox) {
-        FarvoriteModel.readFarvoiteListStoreAcitivy(store, context, checkBox, storeAcitivyCallBack);
+        FarvoriteModel.readFarvoiteListStoreAcitivy(store, context, checkBox, checkFavorite);
     }
 
     public void insertForfavorite(Store store, CheckBox checkBox) {
-        FarvoriteModel.insertFavorite(checkBox, store, context, storeAcitivyCallBack);
+        FarvoriteModel.insertFavorite(checkBox, store, context, checkFavorite);
     }
 
     public void getStartCount(int id) {
@@ -47,12 +47,12 @@ public class StorePresenter {
             count = count + 1;
             if (count != 0) {
                 Float finalstar = starcount / count;
-                storeAcitivyInterface.addString(finalstar.toString());
-                storeAcitivyInterface.addSuccess();
+                checkAddStoreItems.addString(finalstar.toString());
+                checkAddStoreItems.addSuccess();
             } else {
-                storeAcitivyInterface.addString("0");
+                checkAddStoreItems.addString("0");
             }
-            storeAcitivyInterface.deleteSuccess();
+            checkAddStoreItems.deleteSuccess();
         } else {
 
         }

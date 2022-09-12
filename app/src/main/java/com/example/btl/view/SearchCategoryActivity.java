@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.example.btl.adapter.StoreAdapter;
-import com.example.btl.myinterface.CategoryInterface;
+import com.example.btl.myinterface.CheckAddCategoryHome;
 import com.example.btl.model.Category;
 import com.example.btl.model.Store;
 import com.example.btl.presenter.ListTypeStorePresenter;
@@ -21,7 +21,7 @@ import com.example.btl.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchCategoryActivity extends AppCompatActivity implements CategoryInterface {
+public class SearchCategoryActivity extends AppCompatActivity implements CheckAddCategoryHome {
     private Toolbar toolBar_listStore;
     private RecyclerView rec_category;
     private List<Store> mListStore;

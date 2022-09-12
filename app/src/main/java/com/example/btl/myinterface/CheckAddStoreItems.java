@@ -1,6 +1,6 @@
 package com.example.btl.myinterface;
 
-public interface StoreAcitivyInterface {
+public interface CheckAddStoreItems {
     void addString(String text);
     void deleteSuccess();
     void addSuccess();

@@ -12,7 +12,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.btl.myinterface.callback.CheckAccountView;
-import com.example.btl.myinterface.ChangeAccountInterface;
+import com.example.btl.myinterface.CheckAccountUpdate;
 import com.example.btl.view.MainActivity;
 
 import org.json.JSONArray;
@@ -62,7 +62,7 @@ public class AccountModel {
         checkAccountView.setDataAccount(id, user);
     }
 
-    public static void upDateUser(Context mContext, User user, ChangeAccountInterface changeAccountInterface) {
+    public static void upDateUser(Context mContext, User user, CheckAccountUpdate checkAccountUpdate) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/user/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -74,7 +74,7 @@ public class AccountModel {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                changeAccountInterface.onFail();
+                checkAccountUpdate.onFail();
             }
         }) {
             @Override

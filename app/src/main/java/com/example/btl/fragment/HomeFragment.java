@@ -31,8 +31,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.btl.adapter.CategoryAdapter;
 import com.example.btl.adapter.PhotoAdapter;
 import com.example.btl.adapter.StoreAdapter;
-import com.example.btl.myinterface.callback.HomeFragmentcallBack;
-import com.example.btl.myinterface.HomeFragmentInterface;
+import com.example.btl.myinterface.callback.AddDataHome;
+import com.example.btl.myinterface.CheckConnectHome;
 import com.example.btl.model.Category;
 import com.example.btl.model.Photo;
 import com.example.btl.model.Store;
@@ -46,7 +46,7 @@ import java.util.Locale;
 import me.relex.circleindicator.CircleIndicator3;
 
 
-public class HomeFragment extends Fragment implements HomeFragmentInterface, HomeFragmentcallBack, LocationListener {
+public class HomeFragment extends Fragment implements CheckConnectHome, AddDataHome, LocationListener {
     private LocationManager locationManager;
     private ProgressDialog progressDialog;
     private ViewPager2 mviewPager2;

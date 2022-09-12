@@ -8,8 +8,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.btl.myinterface.callback.HomeFragmentcallBack;
-import com.example.btl.myinterface.HomeFragmentInterface;
+import com.example.btl.myinterface.callback.AddDataHome;
+import com.example.btl.myinterface.CheckConnectHome;
 import com.example.btl.view.MainActivity;
 
 import org.json.JSONArray;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class CategoryModel {
-    public static void readCategoryList(List<Category> categoryList, Context context, HomeFragmentInterface homeFragmentInterface, HomeFragmentcallBack homeFragmentcallBack) {
+    public static void readCategoryList(List<Category> categoryList, Context context, CheckConnectHome checkConnectHome, AddDataHome addDataHome) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/category/selectUser.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -33,7 +33,7 @@ public class CategoryModel {
                                 String type = jsonObject.getString("type");
                                 String image_category = jsonObject.getString("image_category");
                                 Category category = new Category(id_category, type, image_category);
-                                homeFragmentcallBack.addToCategory(category);
+                                addDataHome.addToCategory(category);
                             }
                         } catch (Exception exception) {
                         }
@@ -42,7 +42,7 @@ public class CategoryModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        homeFragmentInterface.noInterNetConnect();
+                        checkConnectHome.noInterNetConnect();
                     }
                 });
         requestQueue.add(jsonArrayRequest);

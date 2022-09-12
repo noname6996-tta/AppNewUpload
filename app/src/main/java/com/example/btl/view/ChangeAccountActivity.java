@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.btl.myinterface.ChangeAccountInterface;
+import com.example.btl.myinterface.CheckAccountUpdate;
 import com.example.btl.model.RealPathUtil;
 import com.example.btl.model.User;
 import com.example.btl.presenter.ChangeAccountPresenter;
@@ -29,7 +29,7 @@ import com.example.btl.R;
 
 import java.io.IOException;
 
-public class ChangeAccountActivity extends AppCompatActivity implements ChangeAccountInterface {
+public class ChangeAccountActivity extends AppCompatActivity implements CheckAccountUpdate {
     private ImageView img_change_account, btnSelectImage, btnBack_onChange;
     private EditText tv_change_nameaccount, tv_change_dateaccount, tv_change_addressaccount, tv_change_emailaccount, tv_change_phoneaccount, tv_change_pass;
     private Button btn_update_Account;

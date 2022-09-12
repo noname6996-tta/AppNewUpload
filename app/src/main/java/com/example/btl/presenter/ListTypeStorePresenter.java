@@ -10,7 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.btl.adapter.StoreAdapter;
-import com.example.btl.myinterface.CategoryInterface;
+import com.example.btl.myinterface.CheckAddCategoryHome;
 import com.example.btl.model.Category;
 import com.example.btl.model.Store;
 import com.example.btl.view.MainActivity;
@@ -23,12 +23,12 @@ import java.util.List;
 
 public class ListTypeStorePresenter {
     private Context context;
-    private CategoryInterface categoryInterface;
+    private CheckAddCategoryHome checkAddCategoryHome;
     private Store store;
 
-    public ListTypeStorePresenter(Context context, CategoryInterface categoryInterface) {
+    public ListTypeStorePresenter(Context context, CheckAddCategoryHome checkAddCategoryHome) {
         this.context = context;
-        this.categoryInterface = categoryInterface;
+        this.checkAddCategoryHome = checkAddCategoryHome;
     }
 
     public void readStoreList(Category category, List<Store> mListStore, StoreAdapter storeAdapter) {
@@ -61,7 +61,7 @@ public class ListTypeStorePresenter {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        categoryInterface.failRespon();
+                        checkAddCategoryHome.failRespon();
                     }
                 });
         requestQueue.add(jsonArrayRequest);
@@ -85,7 +85,7 @@ public class ListTypeStorePresenter {
 
     public void CheckItem(Category category) {
         if (category == null) {
-            categoryInterface.onNullItems();
+            checkAddCategoryHome.onNullItems();
             return;
         }
     }

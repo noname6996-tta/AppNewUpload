@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.btl.myinterface.StoreLocationInterface;
+import com.example.btl.myinterface.CheckLocationStore;
 import com.example.btl.model.Store;
 import com.example.btl.presenter.StoreLocationPresenter;
 import com.example.btl.R;
@@ -24,7 +24,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class StoreLocationFragment extends Fragment implements OnMapReadyCallback , StoreLocationInterface {
+public class StoreLocationFragment extends Fragment implements OnMapReadyCallback , CheckLocationStore {
     private GoogleMap mMap;
     private SupportMapFragment supportMapFragment;
     private StoreActivity storeActivity;

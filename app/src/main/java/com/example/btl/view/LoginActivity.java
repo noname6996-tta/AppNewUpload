@@ -11,11 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.btl.myinterface.LoginInterface;
+import com.example.btl.myinterface.CheckLogin;
 import com.example.btl.presenter.LoginPeresenter;
 import com.example.btl.R;
 
-public class LoginActivity extends AppCompatActivity implements LoginInterface {
+public class LoginActivity extends AppCompatActivity implements CheckLogin {
     private EditText edt_Email;
     private EditText edt_password;
     private Button btn_Login;

@@ -1,6 +1,6 @@
 package com.example.btl.myinterface;
 
-public interface CategoryAdaInterface {
+public interface CheckAddCategory {
     void onFail();
     void onSucess();
 }

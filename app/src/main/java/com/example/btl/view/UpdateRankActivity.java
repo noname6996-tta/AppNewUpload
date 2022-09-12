@@ -12,11 +12,11 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.btl.myinterface.callback.UpdateRatingInterface;
+import com.example.btl.myinterface.callback.IUpdateRating;
 import com.example.btl.presenter.UpdateRankPresenter;
 import com.example.btl.R;
 
-public class UpdateRankActivity extends AppCompatActivity implements UpdateRatingInterface {
+public class UpdateRankActivity extends AppCompatActivity implements IUpdateRating {
     private RatingBar ratingBarYours_update;
     private TextView tv_update_ratting;
     private EditText edt_update_comment_ratting;

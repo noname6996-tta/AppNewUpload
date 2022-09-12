@@ -17,10 +17,10 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.btl.myinterface.callback.SotreRattingCallback;
-import com.example.btl.myinterface.callback.UpdateRatingInterface;
-import com.example.btl.myinterface.RattingInterface;
-import com.example.btl.myinterface.StoreRattingInterface;
+import com.example.btl.myinterface.callback.Ratting;
+import com.example.btl.myinterface.callback.IUpdateRating;
+import com.example.btl.myinterface.CheckAddRank;
+import com.example.btl.myinterface.CheckAddRankStore;
 import com.example.btl.presenter.StorePresenter;
 import com.example.btl.view.MainActivity;
 import com.example.btl.view.SetRankActivity;
@@ -67,7 +67,7 @@ public class RankModel {
         requestQueue.add(jsonArrayRequest);
     }
 
-    public static void readRattingListinStoreRatting(Context mContext, SotreRattingCallback sotreRattingCallback) {
+    public static void readRattingListinStoreRatting(Context mContext, Ratting ratting) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/selectratting.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -84,7 +84,7 @@ public class RankModel {
                                 Float ratting = Float.valueOf(jsonObject.getString("ratting"));
                                 String comment = jsonObject.getString("comment");
                                 Rank rank1 = new Rank(id_rating, id_store, id_user, ratting, comment);
-                                sotreRattingCallback.checkId_store(id_store, rank1);
+                                ratting.checkId_store(id_store, rank1);
 
                             }
                         } catch (Exception exception) {
@@ -101,20 +101,20 @@ public class RankModel {
         requestQueue.add(jsonArrayRequest);
     }
 
-    public static void addRatting(Rank rank, Context mContext, RattingInterface rattingInterface) {
+    public static void addRatting(Rank rank, Context mContext, CheckAddRank checkAddRank) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/insertratting.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        rattingInterface.onSuccess();
-                        rattingInterface.callBack();
+                        checkAddRank.onSuccess();
+                        checkAddRank.callBack();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                rattingInterface.failRespon(error.toString());
+                checkAddRank.failRespon(error.toString());
             }
         }) {
             @Override
@@ -130,7 +130,7 @@ public class RankModel {
         requestQueue.add(stringRequest);
     }
 
-    public static void checkCanComment(Integer id_store, Integer id_user, StoreRattingInterface storeRattingInterface, Context mContext) {
+    public static void checkCanComment(Integer id_store, Integer id_user, CheckAddRankStore checkAddRankStore, Context mContext) {
         StringRequest requestLogin = new StringRequest(Request.Method.POST, "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/checkRatting.php",
                 new Response.Listener<String>() {
                     @Override
@@ -145,7 +145,7 @@ public class RankModel {
                                 rank.setId_store(Integer.valueOf(jsonObject.getString("id_store")));
                                 String id_user = jsonObject.getString("id_user");
                                 String id_store = jsonObject.getString("id_store");
-                                storeRattingInterface.onCannotRattong();
+                                checkAddRankStore.onCannotRattong();
 
                             } else {
                                 message = jsonObject.getString("message");
@@ -205,19 +205,19 @@ public class RankModel {
         requestQueue.add(stringRequest);
     }
 
-    public static void updateRatting(Context context, Integer idratting, Float ratting, String comment, UpdateRatingInterface updateRatingInterface) {
+    public static void updateRatting(Context context, Integer idratting, Float ratting, String comment, IUpdateRating IUpdateRating) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/ratting/update.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        updateRatingInterface.onSuccess();
+                        IUpdateRating.onSuccess();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                updateRatingInterface.onFail(error.toString());
+                IUpdateRating.onFail(error.toString());
             }
         }) {
             @Override

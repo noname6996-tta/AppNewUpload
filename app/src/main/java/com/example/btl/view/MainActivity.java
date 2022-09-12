@@ -17,8 +17,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.btl.adapter.MyViewPageAdapter;
-import com.example.btl.fragment.CheckAccount;
-import com.example.btl.fragment.AddFavorite;
+import com.example.btl.fragment.AccountFragment;
+import com.example.btl.fragment.FavoriteFragment;
 import com.example.btl.fragment.HomeFragment;
 import com.example.btl.fragment.NewsFragment;
 import com.example.btl.fragment.SearchFragment;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction.commit();
                 } else if (id == R.id.bottom_nav_heart) {
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.main_frame, new AddFavorite());
+                    fragmentTransaction.replace(R.id.main_frame, new FavoriteFragment());
                     fragmentTransaction.commit();
                 } else if (id == R.id.bottom_nav_news) {
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction.commit();
                 } else if (id == R.id.bottom_nav_account) {
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.main_frame, new CheckAccount());
+                    fragmentTransaction.replace(R.id.main_frame, new AccountFragment());
                     fragmentTransaction.commit();
                 }
                 return true;

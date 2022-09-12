@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btl.adapter.RankAdapter;
-import com.example.btl.myinterface.callback.SotreRattingCallback;
-import com.example.btl.myinterface.StoreRattingInterface;
+import com.example.btl.myinterface.callback.Ratting;
+import com.example.btl.myinterface.CheckAddRankStore;
 import com.example.btl.model.Rank;
 import com.example.btl.model.Store;
 import com.example.btl.presenter.StoreRankPresenter;
@@ -29,7 +29,7 @@ import com.example.btl.view.StoreActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoreRankFragment extends Fragment implements StoreRattingInterface, SotreRattingCallback {
+public class StoreRankFragment extends Fragment implements CheckAddRankStore, Ratting {
     private StoreActivity storeActivity;
     private View view;
     private RecyclerView rec_comment;

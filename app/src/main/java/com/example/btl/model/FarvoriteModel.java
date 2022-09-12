@@ -23,8 +23,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.btl.myinterface.callback.AddFavoriteView;
-import com.example.btl.myinterface.callback.StoreAcitivyCallBack;
-import com.example.btl.myinterface.FavoriteFragmentInterface;
+import com.example.btl.myinterface.callback.CheckFavorite;
+import com.example.btl.myinterface.CheckAddFavorite;
 import com.example.btl.R;
 import com.example.btl.view.LoginActivity;
 import com.example.btl.view.MainActivity;
@@ -42,7 +42,7 @@ import java.util.Map;
 public class FarvoriteModel {
     private static Store store_read;
 
-    public static void readFarvoiteList(Context mContext, AddFavoriteView addFavoriteView, FavoriteFragmentInterface favoriteFragmentInterface) {
+    public static void readFarvoiteList(Context mContext, AddFavoriteView addFavoriteView, CheckAddFavorite checkAddFavorite) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/favorite/selectfa.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -68,7 +68,7 @@ public class FarvoriteModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        favoriteFragmentInterface.onFail();
+                        checkAddFavorite.onFail();
                     }
                 });
         requestQueue.add(jsonArrayRequest);
@@ -122,7 +122,7 @@ public class FarvoriteModel {
         store_read = new Store(id_store, name_store, address_store, type, timeopen, phone, lat, lot, linkWeb, image_store, star_store);
     }
 
-    public static void insertFavorite(CheckBox chkLove, Store store, Context mContext, StoreAcitivyCallBack storeAcitivyCallBack) {
+    public static void insertFavorite(CheckBox chkLove, Store store, Context mContext, CheckFavorite checkFavorite) {
         chkLove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,7 +158,7 @@ public class FarvoriteModel {
                             int idstore = store.getId_store();
                             Farvorite farvorite = new Farvorite(0, iduser, idstore);
                             deleteFavorite(farvorite, mContext);
-                            readFarvoiteListStoreAcitivy(store, mContext, chkLove, storeAcitivyCallBack);
+                            readFarvoiteListStoreAcitivy(store, mContext, chkLove, checkFavorite);
                             dialog.dismiss();
                         }
                     });
@@ -229,7 +229,7 @@ public class FarvoriteModel {
         requestQueue.add(stringRequest);
     }
 
-    public static void readFarvoiteListStoreAcitivy(Store store, Context mContext, CheckBox chkLove, StoreAcitivyCallBack storeAcitivyCallBack) {
+    public static void readFarvoiteListStoreAcitivy(Store store, Context mContext, CheckBox chkLove, CheckFavorite checkFavorite) {
         String url = "http://" + MainActivity.IP_LOCALHOST + "/AndroidBTL/btl/favorite/selectfa.php";
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -246,7 +246,7 @@ public class FarvoriteModel {
                                 int iduser1 = LoginActivity.id_user;
                                 int idstore2 = store.getId_store();
                                 if (id_user.equals(iduser1) && id_store.equals(idstore2)) {
-                                    storeAcitivyCallBack.setCheckBox(id_love);
+                                    checkFavorite.setCheckBox(id_love);
                                 }
                             }
                         } catch (Exception exception) {

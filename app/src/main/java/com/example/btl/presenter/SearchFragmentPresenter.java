@@ -2,22 +2,22 @@ package com.example.btl.presenter;
 
 import android.content.Context;
 
-import com.example.btl.myinterface.callback.SearchRragmentCallback;
-import com.example.btl.myinterface.SearchFragmentInterface;
+import com.example.btl.myinterface.callback.Searching;
+import com.example.btl.myinterface.CheckSearchItems;
 import com.example.btl.model.StoreModel;
 
 public class SearchFragmentPresenter {
     private Context mContext;
-    private SearchFragmentInterface searchFragmentInterface;
-    private SearchRragmentCallback searchRragmentCallback;
+    private CheckSearchItems checkSearchItems;
+    private Searching searchRragmentCallback;
 
-    public SearchFragmentPresenter(Context mContext, SearchFragmentInterface searchFragmentInterface, SearchRragmentCallback searchRragmentCallback) {
+    public SearchFragmentPresenter(Context mContext, CheckSearchItems checkSearchItems, Searching searchRragmentCallback) {
         this.mContext = mContext;
-        this.searchFragmentInterface = searchFragmentInterface;
+        this.checkSearchItems = checkSearchItems;
         this.searchRragmentCallback = searchRragmentCallback;
     }
 
     public void addToListSearch() {
-        StoreModel.addSearchStoreList(mContext, searchFragmentInterface, searchRragmentCallback);
+        StoreModel.addSearchStoreList(mContext, checkSearchItems, searchRragmentCallback);
     }
 }

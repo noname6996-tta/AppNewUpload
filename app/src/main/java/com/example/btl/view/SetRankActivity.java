@@ -17,12 +17,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.btl.myinterface.RattingInterface;
+import com.example.btl.myinterface.CheckAddRank;
 import com.example.btl.model.Rank;
 import com.example.btl.presenter.RankPresenter;
 import com.example.btl.R;
 
-public class SetRankActivity extends AppCompatActivity implements RattingInterface {
+public class SetRankActivity extends AppCompatActivity implements CheckAddRank {
     private ImageView img_RattingBack;
     private TextView tv_your_current_rating;
     private RatingBar rat_ratingBar;
