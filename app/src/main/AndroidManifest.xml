@@ -21,22 +21,22 @@
         android:theme="@style/Theme.BTL"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".View.UpdateRattingActivity"
+            android:name=".view.UpdateRankActivity"
             android:exported="false" />
         <activity
-            android:name=".View.ForgotPasswordActivity"
+            android:name=".view.ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".View.ChangeAccountActivity"
+            android:name=".view.ChangeAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".View.PaperOnBoardingActivity"
+            android:name=".view.PaperOnBoardingActivity"
             android:exported="false" />
         <activity
-            android:name=".View.RankingActivity"
+            android:name=".view.SetRankActivity"
             android:exported="false" />
         <activity
-            android:name=".Fragment.WebYouTubeFragment"
+            android:name=".fragment.WebYouTubeFragment"
             android:exported="false" />
 
         <meta-data
@@ -44,26 +44,26 @@
             android:value="@string/map_api_key" />
 
         <activity
-            android:name=".View.StoreActivity"
+            android:name=".view.StoreActivity"
             android:exported="false" />
         <activity
-            android:name=".View.CategoryStoreActivity"
+            android:name=".view.SearchCategoryActivity"
             android:exported="false" />
-        <activity android:name=".View.YouTubeActivity"
+        <activity android:name=".view.YouTubeActivity"
             android:exported="false"></activity>
-        <activity android:name=".View.PlayVideoActivity"
+        <activity android:name=".view.PlayVideoActivity"
             android:exported="false"></activity>
         <activity
-            android:name=".View.RegesterActivity"
+            android:name=".view.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".View.LoginActivity"
+            android:name=".view.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".View.MainActivity"
+            android:name=".view.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".View.SplashActivity"
+            android:name=".view.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

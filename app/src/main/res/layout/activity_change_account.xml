@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".View.ChangeAccountActivity">
+    tools:context=".view.ChangeAccountActivity">
 
     <LinearLayout
         android:id="@+id/layout_ontop"
