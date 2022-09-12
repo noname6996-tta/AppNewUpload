@@ -24,7 +24,7 @@
             android:name=".View.UpdateRattingActivity"
             android:exported="false" />
         <activity
-            android:name=".View.ForgotPassword"
+            android:name=".View.ForgotPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".View.ChangeAccountActivity"
@@ -36,7 +36,7 @@
             android:name=".View.RankingActivity"
             android:exported="false" />
         <activity
-            android:name=".Fragment.WebActivity"
+            android:name=".Fragment.WebYouTubeFragment"
             android:exported="false" />
 
         <meta-data
@@ -47,7 +47,7 @@
             android:name=".View.StoreActivity"
             android:exported="false" />
         <activity
-            android:name=".View.CategoryStore"
+            android:name=".View.CategoryStoreActivity"
             android:exported="false" />
         <activity android:name=".View.YouTubeActivity"
             android:exported="false"></activity>

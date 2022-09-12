@@ -29,7 +29,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
     public static String IP_LOCALHOST = "192.168.43.207";
-    protected Toolbar toolBar;
+    private Toolbar toolBar;
     private BottomNavigationView bottomNavigationView;
     private MainAcitivyPresenter mainAcitivyPresenter;
 
@@ -58,23 +58,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if (id == R.id.bottom_home) {
+                if (id == R.id.bottom_nav_home) {
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_frame, new HomeFragment());
                     fragmentTransaction.commit();
-                } else if (id == R.id.bottom_search) {
+                } else if (id == R.id.bottom_nav_search) {
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_frame, new SearchFragment());
                     fragmentTransaction.commit();
-                } else if (id == R.id.bottom_heart) {
+                } else if (id == R.id.bottom_nav_heart) {
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_frame, new FavoriteFragment());
                     fragmentTransaction.commit();
-                } else if (id == R.id.bottom_News) {
+                } else if (id == R.id.bottom_nav_news) {
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_frame, new NewsFragment());
                     fragmentTransaction.commit();
-                } else if (id == R.id.bottom_account) {
+                } else if (id == R.id.bottom_nav_account) {
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.main_frame, new AccountFragment());
                     fragmentTransaction.commit();
@@ -103,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
         windowAttributes.gravity = gravity;
         window.setAttributes(windowAttributes);
         dialog.setCancelable(false);
-        Button btn_dont_logout = dialog.findViewById(R.id.btn_dont_logout);
-        btn_dont_logout.setOnClickListener(new View.OnClickListener() {
+        Button btn_not_logout = dialog.findViewById(R.id.btn_not_logout);
+        btn_not_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();

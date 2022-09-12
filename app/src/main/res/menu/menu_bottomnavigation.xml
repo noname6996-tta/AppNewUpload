@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/bottom_home"
+        android:id="@+id/bottom_nav_home"
         android:title="@string/bottom_home"
         android:icon="@drawable/ic_baseline_local_fire_department_24"></item>
     <item
-        android:id="@+id/bottom_search"
+        android:id="@+id/bottom_nav_search"
         android:title="@string/bottom_search"
         android:icon="@drawable/ic_baseline_search_24"></item>
     <item
-        android:id="@+id/bottom_heart"
+        android:id="@+id/bottom_nav_heart"
         android:title="@string/bottom_heart"
         android:icon="@drawable/ic_baseline_favorite_border_24"></item>
     <item
-        android:id="@+id/bottom_News"
+        android:id="@+id/bottom_nav_news"
         android:title="@string/bottom_News"
         android:icon="@drawable/ic_baseline_fiber_new_24"></item>
     <item
-        android:id="@+id/bottom_account"
+        android:id="@+id/bottom_nav_account"
         android:title="@string/bottom_account"
         android:icon="@drawable/ic_baseline_account_circle_24"></item>
 </menu>

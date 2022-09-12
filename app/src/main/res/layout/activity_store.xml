@@ -134,8 +134,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="#FFFFFF"
-            app:itemIconTint="@color/custom_color_bottom_nav"
-            app:itemTextColor="@color/custom_color_bottom_nav"
+            app:itemIconTint="@color/bottom_nav"
+            app:itemTextColor="@color/bottom_nav"
             app:menu="@menu/menu_bottomnavigation_store"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
         <FrameLayout

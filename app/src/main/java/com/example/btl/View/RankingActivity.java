@@ -47,7 +47,7 @@ public class RankingActivity extends AppCompatActivity implements RattingInterfa
     private ImageView img_RattingBack;
     private TextView tv_your_current_rating;
     private RatingBar rat_ratingBar;
-    private EditText edt_commetn_ratting;
+    private EditText edt_comment_ratting;
     private Button btn_sent_ratting;
     private RattingPresenter rattingPresenter;
 
@@ -64,7 +64,7 @@ public class RankingActivity extends AppCompatActivity implements RattingInterfa
         rattingPresenter = new RattingPresenter(this.getApplicationContext(), this);
         tv_your_current_rating = findViewById(R.id.tv_your_current_rating);
         rat_ratingBar = findViewById(R.id.rat_ratingBar);
-        edt_commetn_ratting = findViewById(R.id.edt_commetn_ratting);
+        edt_comment_ratting = findViewById(R.id.edt_comment_ratting);
         btn_sent_ratting = findViewById(R.id.btn_sent_ratting);
         img_RattingBack = findViewById(R.id.img_RattingBack);
         img_RattingBack.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +92,7 @@ public class RankingActivity extends AppCompatActivity implements RattingInterfa
     }
 
     public void onClickRatting(Integer a1) {
-        Ratting ratting = new Ratting(0, a1, LoginActivity.id_user, star, edt_commetn_ratting.getText().toString().trim());
+        Ratting ratting = new Ratting(0, a1, LoginActivity.id_user, star, edt_comment_ratting.getText().toString().trim());
         rattingPresenter.addToRattingList(ratting);
         rattingPresenter.updateStarStore(a1);
     }

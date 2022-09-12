@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.btl.R;
 
-public class WebActivity extends AppCompatActivity {
+public class WebYouTubeFragment extends AppCompatActivity {
     WebView webView;
 
     @Override

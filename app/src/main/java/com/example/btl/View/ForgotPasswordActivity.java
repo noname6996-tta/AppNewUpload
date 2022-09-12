@@ -15,7 +15,7 @@ import com.example.btl.R;
 
 import java.util.Random;
 
-public class ForgotPassword extends AppCompatActivity implements ForGotPassInterface {
+public class ForgotPasswordActivity extends AppCompatActivity implements ForGotPassInterface {
     private EditText email;
     private Button button;
     private ForGotPassPresenter forGotPassPresenter;
@@ -29,7 +29,7 @@ public class ForgotPassword extends AppCompatActivity implements ForGotPassInter
     }
 
     public void mapping() {
-        forGotPassPresenter = new ForGotPassPresenter(ForgotPassword.this, this);
+        forGotPassPresenter = new ForGotPassPresenter(ForgotPasswordActivity.this, this);
         email = findViewById(R.id.email);
         button = findViewById(R.id.btn);
         button.setOnClickListener(new View.OnClickListener() {

@@ -55,7 +55,7 @@ public class NewsFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getContext(), WebActivity.class);
+                Intent intent = new Intent(getContext(), WebYouTubeFragment.class);
                 intent.putExtra("url", list.get(i).getLink());
                 startActivity(intent);
             }

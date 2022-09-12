@@ -21,7 +21,7 @@ import com.example.btl.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryStore extends AppCompatActivity implements ListTypeStoreInterface {
+public class CategoryStoreActivity extends AppCompatActivity implements ListTypeStoreInterface {
     private Toolbar toolBar_listStore;
     private RecyclerView rec_category;
     private List<Store> mListStore;

@@ -68,7 +68,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/edt_commetn_ratting"
+        android:id="@+id/edt_comment_ratting"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
